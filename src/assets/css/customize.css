@@ -1,0 +1,138 @@
+html, body {
+    font-family: Arial, Helvetica, "Microsoft YaHei", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#app {
+    height: 100%;
+}
+
+a {
+    color: #409EFF;
+    text-decoration: none;
+}
+
+i {
+    margin-right: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+pre {
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.list {
+    line-height: 1;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.list:first-child {
+    padding-top: 0;
+}
+
+.list:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.el-header {
+    width: 100%;
+    line-height: 60px;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+}
+
+.el-container {
+    height: 100%;
+}
+
+.el-menu {
+    height: 100%;
+}
+
+.el-breadcrumb {
+    font-size: 16px;
+}
+
+.el-menu .el-scrollbar__wrap {
+    overflow-x: hidden;
+}
+
+.el-col .el-card {
+    height: 100%;
+}
+
+.el-tooltip__popper {
+    max-width: 80%;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-icon {
+    margin-right: 10px;
+}
+
+.button-long {
+    width: 100%;
+}
+
+.card-title {
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+}
+
+.pagination {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.el-icon-success {
+    color: #67C23A;
+}
+
+.el-icon-warning {
+    color: #E6A23C;
+}
+
+.el-icon-error {
+    color: #f56c6c;
+}
+
+.el-tag + .el-tag {
+    margin-left: 10px;
+}
