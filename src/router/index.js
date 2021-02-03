@@ -1,31 +1,46 @@
 import store from '/@/store'
 import {createRouter, createWebHistory} from 'vue-router'
-
-import Admin from '/@/layout/Admin.vue'
-import Index from '/@/views/Index.vue'
-import Login from '/@/views/Login.vue'
+import {ElMessage} from 'element-plus'
+import Portal from '/@/layout/Portal.vue'
 
 const routes = [
     {
         path: '/',
-        name: 'Admin',
-        component: Admin,
+        name: 'Portal',
+        component: Portal,
         children: [
             {
                 path: '/',
                 name: 'Index',
-                component: Index
+                component: () => import('/@/views/Index.vue')
+            },
+            {
+                path: '/login',
+                name: 'Login',
+                component: () => import('/@/views/Login.vue')
+            },
+            {
+                path: '/register',
+                name: 'Register',
+                component: () => import('/@/views/Register.vue')
             }
         ]
     },
     {
-        path: '/login',
-        name: 'login',
-        component: Login
+        path: '/admin',
+        name: 'Admin',
+        component: () => import('/@/layout/Admin.vue'),
+        children: [
+            {
+                path: '/',
+                name: 'Admin-Index',
+                component: () => import('/@/views/admin/Index.vue')
+            }
+        ]
     },
     {
         path: '/:pathMatch(.*)',
-        component: Index
+        component: () => import('/@/views/NotFound.vue')
     }
 ]
 
@@ -35,10 +50,13 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-    if (to.name !== 'login') {
+    if (to.meta.requiresAuth) {
         if (!store.state.auth) {
-            router.push({name: 'login'})
+            router.push({name: 'Login'})
             return false
+        }
+        if (to.meta.role !== store.state.auth.role) {
+            ElMessage.error("没有访问权限")
         }
     }
 })
