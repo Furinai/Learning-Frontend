@@ -27,7 +27,7 @@ export default {
             this.$confirm("确定注销？", "提示", {type: "warning"}).then(() => {
                     removeAuth()
                     removeToken()
-                    this.$router.push({name: "login"})
+                    this.$router.push({name: "Login"})
                 }
             ).catch(() => {
                 this.$message.warning("已取消！")
