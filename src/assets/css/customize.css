@@ -75,6 +75,18 @@ pre {
     color: #f56c6c;
 }
 
+.el-row > a > i {
+    margin-left: 20px;;
+}
+
+.el-row > a {
+    color: #303133;
+}
+
+.el-row > a:hover {
+    color: #409EFF;
+}
+
 .flex-between {
     display: flex;
     justify-content: space-between;

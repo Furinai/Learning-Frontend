@@ -1,16 +1,26 @@
 <template>
-    <div class="header">
-        <ul class="nav-list">
-            <li v-if="auth" class="nav">
-                欢迎，{{ auth.fullName }}，
-            </li>
-            <li class="nav">
-                <a href="javascript:" @click="logout">
-                    退出登录
+    <el-row type="flex" justify="space-between">
+        <el-col :span="12">
+            <el-row type="flex">
+                <router-link class="logo" :to="{name: 'Index'}">
+                    Linter
+                </router-link>
+                <router-link :to="{name: 'Index'}">
+                    <i class="el-icon-house"/>首页
+                </router-link>
+            </el-row>
+        </el-col>
+        <el-col :span="12">
+            <el-row type="flex" justify="end">
+                <a v-if="auth" href="javascript:" @click="logout">
+                    <i class="el-icon-user"/>注销
                 </a>
-            </li>
-        </ul>
-    </div>
+                <router-link v-else :to="{name: 'Login'}">
+                    <i class="el-icon-user"/>登录
+                </router-link>
+            </el-row>
+        </el-col>
+    </el-row>
 </template>
 
 <script>
@@ -27,7 +37,7 @@ export default {
             this.$confirm("确定注销？", "提示", {type: "warning"}).then(() => {
                     removeAuth()
                     removeToken()
-                    this.$router.push({name: "login"})
+                    this.$router.push({name: "Login"})
                 }
             ).catch(() => {
                 this.$message.warning("已取消！")
@@ -38,17 +48,9 @@ export default {
 </script>
 
 <style>
-.header {
-    display: flex;
-    margin: auto;
-}
-
-.nav-list {
-    margin-left: auto;
-    display: flex;
-}
-
-.nav {
-    margin-left: 10px;
+.logo {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
 }
 </style>
