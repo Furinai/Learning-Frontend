@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="nav-bar">
         <ul class="nav-list">
             <li v-if="auth" class="nav">
                 欢迎，{{ auth.fullName }}，
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style>
-.header {
+.nav-bar {
     display: flex;
     margin: auto;
 }

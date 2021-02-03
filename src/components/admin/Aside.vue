@@ -1,15 +1,12 @@
 <template>
-    <div class="aside">
-        <el-menu background-color="#304156" text-color="#BFCBD9" active-text-color="#409EFF"
-                 unique-opened router>
-            <el-scrollbar style="height: 100%;">
-                <el-menu-item index="0" :route="{name: 'Index'}">
-                    <i class="el-icon-house"></i>
-                    <template #title>首页</template>
-                </el-menu-item>
-            </el-scrollbar>
-        </el-menu>
-    </div>
+    <el-menu active-text-color="#409EFF" background-color="#304156" text-color="#BFCBD9" router unique-opened>
+        <el-scrollbar>
+            <el-menu-item index="0" :route="{name: 'Index'}">
+                <i class="el-icon-house"></i>
+                <template #title>首页</template>
+            </el-menu-item>
+        </el-scrollbar>
+    </el-menu>
 </template>
 
 <script>
@@ -22,9 +19,3 @@ export default {
     ])
 }
 </script>
-
-<style>
-.aside {
-    height: 100%;
-}
-</style>
