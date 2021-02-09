@@ -7,6 +7,14 @@ export function getAuthUser() {
     })
 }
 
+export function registerUser(data) {
+    return request({
+        url: '/oauth/user',
+        method: 'post',
+        data
+    })
+}
+
 export function getUsers(params) {
     return request({
         url: '/users',
