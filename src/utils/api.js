@@ -45,3 +45,19 @@ export function deleteUser(pathVariable) {
         method: 'delete'
     })
 }
+
+export function getCategories(params) {
+    return request({
+        url: '/categories',
+        method: 'get',
+        params
+    })
+}
+
+export function getCourses(params) {
+    return request({
+        url: '/courses',
+        method: 'get',
+        params
+    })
+}
