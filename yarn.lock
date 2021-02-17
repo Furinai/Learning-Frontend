@@ -22,9 +22,9 @@
     to-fast-properties "^2.0.0"
 
 "@popperjs/core@^2.4.4":
-  version "2.6.0"
-  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
-  integrity sha1-8CIZWv38lC4IjuIQEoWh0xx9cn8=
+  version "2.7.0"
+  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.7.0.tgz?cache=0&sync_timestamp=1613485098895&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.7.0.tgz#5f7760965170f7f1e2910d2498c5be88b47a2a8c"
+  integrity sha1-X3dgllFw9/HikQ0kmMW+iLR6Kow=
 
 "@vitejs/plugin-vue@^1.1.4":
   version "1.1.4"
@@ -177,9 +177,9 @@ cssesc@^3.0.0:
   integrity sha1-N3QZGZA7hoVl4cCep0dEXNGJg+4=
 
 csstype@^2.6.8:
-  version "2.6.14"
-  resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.14.tgz?cache=0&sync_timestamp=1610107126840&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcsstype%2Fdownload%2Fcsstype-2.6.14.tgz#004822a4050345b55ad4dcc00be1d9cf2f4296de"
-  integrity sha1-AEgipAUDRbVa1NzAC+HZzy9Clt4=
+  version "2.6.15"
+  resolved "https://registry.npm.taobao.org/csstype/download/csstype-2.6.15.tgz#655901663db1d652f10cb57ac6af5a05972aea1f"
+  integrity sha1-ZVkBZj2x1lLxDLV6xq9aBZcq6h8=
 
 dayjs@1.x:
   version "1.10.4"
@@ -500,9 +500,9 @@ util-deprecate@^1.0.2:
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
 vite@^2.0.0-beta.70:
-  version "2.0.0-beta.70"
-  resolved "https://registry.npm.taobao.org/vite/download/vite-2.0.0-beta.70.tgz#ec0d4f2bfd02f31d2c59aa9760f27c26647f41ce"
-  integrity sha1-7A1PK/0C8x0sWaqXYPJ8JmR/Qc4=
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/vite/download/vite-2.0.0.tgz#156f35eadaa7947629aa8a24eb23129b07116ee3"
+  integrity sha1-FW816tqnlHYpqook6yMSmwcRbuM=
   dependencies:
     esbuild "^0.8.34"
     postcss "^8.2.1"
@@ -527,7 +527,7 @@ vue@^3.0.5:
 
 vuex@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.npm.taobao.org/vuex/download/vuex-4.0.0.tgz?cache=0&sync_timestamp=1612277442796&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuex%2Fdownload%2Fvuex-4.0.0.tgz#ac877aa76a9c45368c979471e461b520d38e6cf5"
+  resolved "https://registry.npm.taobao.org/vuex/download/vuex-4.0.0.tgz#ac877aa76a9c45368c979471e461b520d38e6cf5"
   integrity sha1-rId6p2qcRTaMl5Rx5GG1INOObPU=
 
 yallist@^3.0.2:
