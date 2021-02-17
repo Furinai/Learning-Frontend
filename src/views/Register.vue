@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import {registerUser} from "../utils/api";
+import {registerUser} from '/@/utils/api'
 
 export default {
     name: 'Register',
