@@ -1,6 +1,6 @@
 <template>
     <el-carousel ref="carousel" height="400px">
-        <el-carousel-item v-for="course in courses" :key="course.id">
+        <el-carousel-item v-for="course in carousel">
             <el-image :src="course.coverPhotoUrl" class="carousel-picture"/>
         </el-carousel-item>
     </el-carousel>
@@ -44,7 +44,8 @@ export default {
     data() {
         return {
             categories: [],
-            courses: []
+            courses: [],
+            carousel: []
         }
     },
     created() {
@@ -76,7 +77,10 @@ export default {
             getCourses({pageSize: 8, categoryId, orderBy: 'heat'}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
-                    this.$refs['carousel'].setActiveItem(0)
+                    if (this.carousel.length === 0) {
+                        this.carousel = this.courses.slice(0, 5)
+                        this.$refs['carousel'].setActiveItem(0)
+                    }
                 }
             })
         },
