@@ -2,6 +2,13 @@ import store from '/@/store'
 import {createRouter, createWebHistory} from 'vue-router'
 import {ElMessage} from 'element-plus'
 import Portal from '/@/layout/Portal.vue'
+import Index from '/@/views/Index.vue'
+import Login from '/@/views/Login.vue'
+import Register from '/@/views/Register.vue'
+import CourseList from '/@/views/Course-List.vue'
+import Admin from '/@/layout/Admin.vue'
+import AdminIndex from '/@/views/admin/Index.vue'
+import NotFound from '/@/views/NotFound.vue'
 
 const routes = [
     {
@@ -12,35 +19,40 @@ const routes = [
             {
                 path: '/',
                 name: 'Index',
-                component: () => import('/@/views/Index.vue')
+                component: Index
             },
             {
                 path: '/login',
                 name: 'Login',
-                component: () => import('/@/views/Login.vue')
+                component: Login
             },
             {
                 path: '/register',
                 name: 'Register',
-                component: () => import('/@/views/Register.vue')
+                component: Register
+            },
+            {
+                path: '/courses',
+                name: 'Course-List',
+                component: CourseList
             }
         ]
     },
     {
         path: '/admin',
         name: 'Admin',
-        component: () => import('/@/layout/Admin.vue'),
+        component: Admin,
         children: [
             {
                 path: '/',
                 name: 'Admin-Index',
-                component: () => import('/@/views/admin/Index.vue')
+                component: AdminIndex
             }
         ]
     },
     {
         path: '/:pathMatch(.*)',
-        component: () => import('/@/views/NotFound.vue')
+        component: NotFound
     }
 ]
 
