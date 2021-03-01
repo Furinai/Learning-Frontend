@@ -8,6 +8,9 @@
                 <router-link :to="{name: 'Index'}">
                     <i class="el-icon-house"/>首页
                 </router-link>
+                <router-link :to="{name: 'Course-List'}">
+                    <i class="el-icon-files"/>课程
+                </router-link>
             </el-row>
         </el-col>
         <el-col :span="12">

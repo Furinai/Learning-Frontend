@@ -1,10 +1,5 @@
 <template>
-    <el-carousel ref="carousel" height="400px">
-        <el-carousel-item v-for="course in carousel">
-            <el-image :src="course.coverPhotoUrl" class="carousel-picture"/>
-        </el-carousel-item>
-    </el-carousel>
-    <el-tabs class="category-list">
+    <el-tabs>
         <el-tab-pane label="全部">
             <el-button size="small" @click="onChangeCategory()">
                 全部
@@ -34,18 +29,23 @@
             </el-card>
         </el-col>
     </el-row>
+    <div class="pagination">
+        <el-pagination background layout="prev, pager, next" :pager-count="5" :total="size" :page-size="20"
+                       :hide-on-single-page="true" @current-change="handlePageChange">
+        </el-pagination>
+    </div>
 </template>
 
 <script>
-import {getCategories, getCourses} from '/@/utils/api'
+import {getCategories, getCourses} from "../utils/api";
 
 export default {
-    name: 'Index',
+    name: "Course-List",
     data() {
         return {
             categories: [],
             courses: [],
-            carousel: []
+            size: 0
         }
     },
     created() {
@@ -74,31 +74,44 @@ export default {
             })
         },
         getCourses(categoryId) {
-            getCourses({pageSize: 8, categoryId, orderBy: 'heat'}).then(result => {
+            getCourses({pageSize: 20, categoryId, orderBy: 'heat'}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
-                    if (this.carousel.length === 0) {
-                        this.carousel = this.courses.slice(0, 5)
-                        this.$refs['carousel'].setActiveItem(0)
-                    }
+                    this.size = result.data.size
                 }
             })
         },
         onChangeCategory(categoryId) {
             this.getCourses(categoryId)
+        },
+        handlePageChange(pageNum) {
+            this.getCourses(pageNum)
         }
     }
 }
 </script>
 
 <style>
-.category-list {
-    margin-top: 30px;
-    margin-bottom: 15px;
+.course-card {
+    margin-top: 20px;
 }
 
-.carousel-picture {
-    height: 100%;
+.card-text {
+    margin: 10px;
+}
+
+.cover-photo {
+    height: 200px;
     width: 100%;
+}
+
+.course-price {
+    font-size: 14px;
+    color: #f56c6c;
+    margin-top: 10px;
+}
+
+.course-price.free {
+    color: #67C23A;
 }
 </style>
