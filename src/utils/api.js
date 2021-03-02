@@ -61,3 +61,11 @@ export function getCourses(params) {
         params
     })
 }
+
+export function getCourse(pathVariable, params) {
+    return request({
+        url: '/courses/' + pathVariable,
+        method: 'get',
+        params
+    })
+}

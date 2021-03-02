@@ -110,6 +110,26 @@ pre {
     text-align: right;
 }
 
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.text-small {
+    font-size: 16px;
+}
+
+.text-medium {
+    font-size: 20px;
+}
+
+.text-large {
+    font-size: 24px;
+}
+
 .text-icon {
     margin-right: 10px;
 }

@@ -6,6 +6,7 @@ import Index from '/@/views/Index.vue'
 import Login from '/@/views/Login.vue'
 import Register from '/@/views/Register.vue'
 import CourseList from '/@/views/Course-List.vue'
+import CourseContent from '/@/views/Course-Content.vue'
 import Admin from '/@/layout/Admin.vue'
 import AdminIndex from '/@/views/admin/Index.vue'
 import NotFound from '/@/views/NotFound.vue'
@@ -35,6 +36,11 @@ const routes = [
                 path: '/courses',
                 name: 'Course-List',
                 component: CourseList
+            },
+            {
+                path: '/courses/:id',
+                name: 'Course-Content',
+                component: CourseContent
             }
         ]
     },

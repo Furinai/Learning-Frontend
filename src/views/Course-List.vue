@@ -13,20 +13,22 @@
     </el-tabs>
     <el-row :gutter="20">
         <el-col v-for="course in courses" :xs="24" :sm="6" class="course-card">
-            <el-card :body-style="{ 'padding': '0px', 'min-height': '300px' }">
-                <el-image :src="course.coverPhotoUrl" class="cover-photo"/>
-                <div class="card-text">
-                    <div class="course-name">
-                        {{ course.name }}
+            <router-link :to="{ name: 'Course-Content', params: { id: course.id }}">
+                <el-card :body-style="{ 'padding': '0px', 'min-height': '300px' }">
+                    <el-image :src="course.coverPhotoUrl" class="card-cover-photo"/>
+                    <div class="card-text">
+                        <div class="card-course-name">
+                            {{ course.name }}
+                        </div>
+                        <div class="card-course-price" v-if="course.price !== 0">
+                            ￥{{ course.price }}
+                        </div>
+                        <div class="card-course-price free" v-else>
+                            免费
+                        </div>
                     </div>
-                    <div class="course-price" v-if="course.price !== 0">
-                        ￥{{ course.price }}
-                    </div>
-                    <div class="course-price free" v-else>
-                        免费
-                    </div>
-                </div>
-            </el-card>
+                </el-card>
+            </router-link>
         </el-col>
     </el-row>
     <div class="pagination">
@@ -37,7 +39,7 @@
 </template>
 
 <script>
-import {getCategories, getCourses} from "../utils/api";
+import {getCategories, getCourses} from '/@/utils/api'
 
 export default {
     name: "Course-List",
@@ -100,18 +102,18 @@ export default {
     margin: 10px;
 }
 
-.cover-photo {
+.card-cover-photo {
     height: 200px;
     width: 100%;
 }
 
-.course-price {
+.card-course-price {
     font-size: 14px;
     color: #f56c6c;
     margin-top: 10px;
 }
 
-.course-price.free {
+.card-course-price.free {
     color: #67C23A;
 }
 </style>
