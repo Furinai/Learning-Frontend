@@ -16,8 +16,10 @@
                         免费
                     </div>
                     <div class="teacher-info">
-                        <el-avatar :src="course.teacher" class="float-left"/>
-                        <span class="teacher-name">结合当地</span>
+                        <el-avatar :src="course.teacher.profilePicture" class="float-left">
+                            {{ course.teacher.fullName }}
+                        </el-avatar>
+                        <span class="teacher-name">{{ course.teacher.fullName }}</span>
                     </div>
                     <div class="course-description">
                         简介：{{ course.description }}
@@ -41,23 +43,41 @@
     </el-card>
     <el-card class="course-content">
         <el-tabs>
-            <el-tab-pane label="章节"></el-tab-pane>
-            <el-tab-pane label="问答" lazy></el-tab-pane>
-            <el-tab-pane label="笔记" lazy></el-tab-pane>
-            <el-tab-pane label="评价" lazy></el-tab-pane>
+            <el-tab-pane label="章节">
+                <CourseChapter :id="this.$route.params.id"/>
+            </el-tab-pane>
+            <el-tab-pane label="问答" lazy>
+                <CourseQuestion :id="this.$route.params.id"/>
+            </el-tab-pane>
+            <el-tab-pane label="笔记" lazy>
+                <CourseNote :id="this.$route.params.id"/>
+            </el-tab-pane>
+            <el-tab-pane label="评价" lazy>
+                <CourseEvaluation :id="this.$route.params.id"/>
+            </el-tab-pane>
         </el-tabs>
     </el-card>
 </template>
 
 <script>
 import {getCourse} from '/@/utils/api'
+import CourseChapter from '/@/components/Course-Chapter.vue'
+import CourseQuestion from '/@/components/Course-Question.vue'
+import CourseNote from '/@/components/Course-Note.vue'
+import CourseEvaluation from '/@/components/Course-Evaluation.vue'
 
 export default {
     name: "Course-Content",
     data() {
         return {
-            course: {}
+            course: {teacher: {}}
         }
+    },
+    components: {
+        CourseChapter,
+        CourseQuestion,
+        CourseNote,
+        CourseEvaluation
     },
     created() {
         this.getCourse(this.$route.params.id)
