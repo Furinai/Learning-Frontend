@@ -27,7 +27,9 @@
                         {{ question.createTime }}
                     </div>
                     <div class="question-title">
-                        {{ question.title }}
+                        <router-link :to="{ name: 'Question-Content', params: { id: question.id }}">
+                            {{ question.title }}
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -57,8 +59,7 @@
 </template>
 
 <script>
-import {getQuestionsOfCourse} from '/@/utils/api'
-import {createQuestion} from "../utils/api";
+import {createQuestion, getQuestionsOfCourse} from '/@/utils/api'
 
 export default {
     name: "Course-Question",
@@ -154,5 +155,9 @@ export default {
 
 .question-title {
     margin-top: 10px;
+}
+
+.question-title a {
+    color: #303133;
 }
 </style>

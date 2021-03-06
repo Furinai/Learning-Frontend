@@ -93,3 +93,19 @@ export function createQuestion(data) {
         data
     })
 }
+
+export function getQuestion(pathVariable, params) {
+    return request({
+        url: '/questions/' + pathVariable,
+        method: 'get',
+        params
+    })
+}
+
+export function getAnswersOfQuestion(pathVariable, params) {
+    return request({
+        url: '/questions/' + pathVariable + '/answers',
+        method: 'get',
+        params
+    })
+}
