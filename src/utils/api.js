@@ -109,3 +109,11 @@ export function getAnswersOfQuestion(pathVariable, params) {
         params
     })
 }
+
+export function createAnswer(data) {
+    return request({
+        url: '/answers',
+        method: 'post',
+        data
+    })
+}

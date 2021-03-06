@@ -1,6 +1,6 @@
 <template>
     <div class="flex-between mt-1 mb-1">
-        <el-button type="primary" size="mini" @click="dialogVisible = true" plain round>
+        <el-button type="primary" size="mini" @click="openDialog" plain round>
             新问题
         </el-button>
         <el-radio-group v-model="orderBy" size="mini" @change="handleOrderChange">
@@ -20,7 +20,8 @@
                             {{ question.author.fullName }}
                         </div>
                         <div class="answer-count">
-                            <i class="el-icon-chat-line-square"/>0
+                            <i class="el-icon-chat-line-square"/>
+                            {{question.answerCount}}
                         </div>
                     </div>
                     <div class="create-time">
@@ -59,6 +60,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import {createQuestion, getQuestionsOfCourse} from '/@/utils/api'
 
 export default {
@@ -87,6 +89,9 @@ export default {
             }
         }
     },
+    computed: mapState([
+        "auth"
+    ]),
     created() {
         this.getQuestions()
     },
@@ -115,6 +120,13 @@ export default {
                     )
                 }
             })
+        },
+        openDialog() {
+            if (this.auth) {
+                this.dialogVisible = true
+            } else {
+                this.$router.push({name: 'Login'})
+            }
         },
         handleOrderChange(orderBy) {
             this.orderBy = orderBy

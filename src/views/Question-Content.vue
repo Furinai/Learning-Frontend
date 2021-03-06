@@ -39,6 +39,19 @@
                 </div>
             </li>
         </ul>
+        <div v-if="this.auth" class="answer-form">
+            <el-form ref="form">
+                <el-form-item>
+                    <el-input type="textarea" v-model.trim="content" :autosize="{minRows: 2, maxRows: 10}"
+                              placeholder="请输入内容" minlength="5" maxlength="500" show-word-limit/>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" class="float-right" size="small" :loading="loading" @click="createAnswer">
+                        提交
+                    </el-button>
+                </el-form-item>
+            </el-form>
+        </div>
         <div class="pagination">
             <el-pagination background layout="prev, pager, next" :pager-count="5" :total="size" :page-size="20"
                            :hide-on-single-page="true" @current-change="handlePageChange">
@@ -48,7 +61,8 @@
 </template>
 
 <script>
-import {getAnswersOfQuestion, getQuestion} from '/@/utils/api'
+import {mapState} from 'vuex'
+import {createAnswer, getAnswersOfQuestion, getQuestion} from '/@/utils/api'
 
 export default {
     name: "Question-Content",
@@ -56,9 +70,14 @@ export default {
         return {
             question: {author: {}},
             answers: [],
-            size: 0
+            size: 0,
+            content: null,
+            loading: false
         }
     },
+    computed: mapState([
+        "auth"
+    ]),
     created() {
         this.getQuestions()
         this.getAnswers()
@@ -78,6 +97,22 @@ export default {
                     this.size = result.data.size
                 }
             })
+        },
+        createAnswer() {
+            if (this.content === null || this.content.length < 5) {
+                this.$alert('内容至少5个字', '提交失败')
+            } else {
+                this.loading = true
+                createAnswer({questionId: this.question.id, content: this.content}).then(result => {
+                    if (result.code === '0000') {
+                        this.content = null
+                        this.getAnswers()
+                        this.$message.success("发布成功！")
+                    }
+                }).finally(() =>
+                    this.loading = false
+                )
+            }
         },
         handlePageChange(pageNum) {
             this.pageNum = pageNum
@@ -119,6 +154,10 @@ export default {
 }
 
 .answer-content {
+    margin-top: 10px;
+}
+
+.answer-form {
     margin-top: 10px;
 }
 </style>
