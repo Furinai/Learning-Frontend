@@ -69,6 +69,7 @@ export default {
     data() {
         return {
             question: {author: {}},
+            pageNum: null,
             answers: [],
             size: 0,
             content: null,
@@ -79,11 +80,11 @@ export default {
         "auth"
     ]),
     created() {
-        this.getQuestions()
+        this.getQuestion()
         this.getAnswers()
     },
     methods: {
-        getQuestions() {
+        getQuestion() {
             getQuestion(this.$route.params.id).then(result => {
                 if (result.code === '0000') {
                     this.question = result.data
@@ -91,7 +92,7 @@ export default {
             })
         },
         getAnswers() {
-            getAnswersOfQuestion(this.$route.params.id).then(result => {
+            getAnswersOfQuestion(this.$route.params.id, {pageNum: this.pageNum}).then(result => {
                 if (result.code === '0000') {
                     this.answers = result.data.list
                     this.size = result.data.size
@@ -116,7 +117,7 @@ export default {
         },
         handlePageChange(pageNum) {
             this.pageNum = pageNum
-            this.getQuestions()
+            this.getAnswers()
         },
         goBack() {
             this.$router.back()
