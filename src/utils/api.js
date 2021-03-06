@@ -77,3 +77,19 @@ export function getChaptersOfCourse(pathVariable, params) {
         params
     })
 }
+
+export function getQuestionsOfCourse(pathVariable, params) {
+    return request({
+        url: '/courses/' + pathVariable + '/questions',
+        method: 'get',
+        params
+    })
+}
+
+export function createQuestion(data) {
+    return request({
+        url: '/questions',
+        method: 'post',
+        data
+    })
+}
