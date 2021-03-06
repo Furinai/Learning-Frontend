@@ -1,12 +1,19 @@
 <template>
+    <div class="flex-between mb-1">
+        <el-radio-group v-model="orderBy" size="mini" @change="handleOrderChange">
+            <el-radio-button label="create_time">最新</el-radio-button>
+            <el-radio-button label="average_score">推荐</el-radio-button>
+        </el-radio-group>
+        <el-pagination :page-size="20" layout="sizes" @size-change="handleSizeChange"/>
+    </div>
     <el-tabs>
         <el-tab-pane label="全部">
-            <el-button size="small" @click="onChangeCategory()">
+            <el-button size="small" @click="handleCategoryChange()">
                 全部
             </el-button>
         </el-tab-pane>
         <el-tab-pane v-for="category in categories" :label="category.name">
-            <el-button size="small" v-for="child in category.children" @click="onChangeCategory(child.id)">
+            <el-button size="small" v-for="child in category.children" @click="handleCategoryChange(child.id)">
                 {{ child.name }}
             </el-button>
         </el-tab-pane>
@@ -47,7 +54,11 @@ export default {
         return {
             categories: [],
             courses: [],
-            size: 0
+            size: 0,
+            categoryId: null,
+            pageNum: null,
+            pageSize: 20,
+            orderBy: 'create_time'
         }
     },
     created() {
@@ -75,19 +86,34 @@ export default {
                 }
             })
         },
-        getCourses(categoryId) {
-            getCourses({pageSize: 20, categoryId, orderBy: 'heat'}).then(result => {
+        getCourses() {
+            getCourses({
+                pageSize: this.pageSize,
+                pageNum: this.pageNum,
+                orderBy: this.orderBy,
+                categoryId: this.categoryId
+            }).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
                     this.size = result.data.size
                 }
             })
         },
-        onChangeCategory(categoryId) {
-            this.getCourses(categoryId)
+        handleCategoryChange(categoryId) {
+            this.categoryId = categoryId
+            this.getCourses()
+        },
+        handleOrderChange(orderBy) {
+            this.orderBy = orderBy
+            this.getCourses()
+        },
+        handleSizeChange(pageSize) {
+            this.pageSize = pageSize
+            this.getCourses()
         },
         handlePageChange(pageNum) {
-            this.getCourses(pageNum)
+            this.pageNum = pageNum
+            this.getCourses()
         }
     }
 }

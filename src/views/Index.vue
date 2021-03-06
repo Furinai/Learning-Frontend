@@ -50,6 +50,7 @@ export default {
     name: 'Index',
     data() {
         return {
+            value:0,
             categories: [],
             courses: [],
             carousel: []
@@ -81,7 +82,7 @@ export default {
             })
         },
         getCourses(categoryId) {
-            getCourses({pageSize: 8, categoryId, orderBy: 'heat'}).then(result => {
+            getCourses({pageSize: 8, categoryId, orderBy: 'average_score'}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
                     if (this.carousel.length === 0) {
