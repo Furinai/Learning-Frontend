@@ -21,7 +21,7 @@
                         </div>
                         <div class="answer-count">
                             <i class="el-icon-chat-line-square"/>
-                            {{question.answerCount}}
+                            {{ question.answerCount }}
                         </div>
                     </div>
                     <div class="create-time">
@@ -114,6 +114,7 @@ export default {
                             this.getQuestions()
                             this.dialogVisible = false
                             this.$message.success("发布成功！")
+                            this.$refs[question].resetFields()
                         }
                     }).finally(() =>
                         this.loading = false
