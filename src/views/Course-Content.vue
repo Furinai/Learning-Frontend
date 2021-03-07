@@ -24,10 +24,8 @@
                     <div class="course-description">
                         简介：{{ course.description }}
                     </div>
-                    <div class="collect-button">
-                        <i class="el-icon-star-off">
-                            收藏
-                        </i>
+                    <div class="average-score">
+                        <i class="el-icon-medal"/>平均评分：{{ course.averageScore }}分
                     </div>
                     <div class="join-button">
                         <el-button v-if="course.price !== 0" type="primary" size="small" round>
@@ -132,9 +130,13 @@ export default {
     line-height: 2;
 }
 
-.collect-button {
+.average-score {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
+    color: #67C23A;
+}
+
+.average-score i {
 }
 
 .join-button {
