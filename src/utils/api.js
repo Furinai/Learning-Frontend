@@ -86,6 +86,14 @@ export function getQuestionsOfCourse(pathVariable, params) {
     })
 }
 
+export function getNotesOfCourse(pathVariable, params) {
+    return request({
+        url: '/courses/' + pathVariable + '/notes',
+        method: 'get',
+        params
+    })
+}
+
 export function createQuestion(data) {
     return request({
         url: '/questions',
@@ -113,6 +121,14 @@ export function getAnswersOfQuestion(pathVariable, params) {
 export function createAnswer(data) {
     return request({
         url: '/answers',
+        method: 'post',
+        data
+    })
+}
+
+export function createNote(data) {
+    return request({
+        url: '/notes',
         method: 'post',
         data
     })
