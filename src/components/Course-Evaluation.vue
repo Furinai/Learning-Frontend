@@ -13,7 +13,9 @@
                 <div class="evaluation-info">
                     <div class="flex-between">
                         <div class="user-name">
-                            {{ evaluation.author.fullName }}
+                            <router-link :to="{ name: 'User-Home', params: { username: evaluation.author.username }}">
+                                {{ evaluation.author.fullName }}
+                            </router-link>
                         </div>
                         <el-rate v-model="evaluation.score" show-score disabled/>
                     </div>

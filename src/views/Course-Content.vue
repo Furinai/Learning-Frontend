@@ -19,7 +19,11 @@
                         <el-avatar :src="course.teacher.profilePicture" class="float-left">
                             {{ course.teacher.fullName }}
                         </el-avatar>
-                        <span class="teacher-name">{{ course.teacher.fullName }}</span>
+                        <span class="teacher-name user-name">
+                             <router-link :to="{ name: 'User-Home', params: { username: course.teacher.username }}">
+                                 {{ course.teacher.fullName }}
+                             </router-link>
+                        </span>
                     </div>
                     <div class="course-description">
                         简介：{{ course.description }}

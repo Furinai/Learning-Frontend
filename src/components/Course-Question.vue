@@ -17,7 +17,9 @@
                 <div class="question-info">
                     <div class="flex-between">
                         <div class="user-name">
-                            {{ question.author.fullName }}
+                            <router-link :to="{ name: 'User-Home', params: { username: question.author.username }}">
+                                {{ question.author.fullName }}
+                            </router-link>
                         </div>
                         <div class="answer-count">
                             <i class="el-icon-chat-line-square"/>
@@ -159,6 +161,10 @@ export default {
 .user-name {
     font-size: 14px;
     font-weight: bold;
+}
+
+.user-name a {
+    color: #303133;
 }
 
 .create-time {

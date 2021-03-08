@@ -15,6 +15,11 @@
         </el-col>
         <el-col :span="12">
             <el-row type="flex" justify="end">
+                <router-link :to="{ name: 'User-Home', params: { username: auth.username }}">
+                    <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
+                        {{ auth.fullName }}
+                    </el-avatar>
+                </router-link>
                 <a v-if="auth" href="javascript:" @click="logout">
                     <i class="el-icon-user"/>注销
                 </a>
@@ -55,5 +60,9 @@ export default {
     color: #333;
     font-size: 20px;
     font-weight: bold;
+}
+
+.profile-picture {
+    margin-top: 15px;
 }
 </style>

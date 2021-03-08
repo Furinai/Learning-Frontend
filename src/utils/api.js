@@ -149,3 +149,11 @@ export function createEvaluation(data) {
         data
     })
 }
+
+export function getUser(pathVariable, params) {
+    return request({
+        url: '/users/' + pathVariable,
+        method: 'get',
+        params
+    })
+}

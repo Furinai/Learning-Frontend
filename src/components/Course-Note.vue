@@ -13,7 +13,9 @@
                 </el-avatar>
                 <div class="note-info">
                     <div class="user-name">
-                        {{ note.author.fullName }}
+                        <router-link :to="{ name: 'User-Home', params: { username: note.author.username }}">
+                            {{ note.author.fullName }}
+                        </router-link>
                     </div>
                     <div class="create-time">
                         {{ note.createTime }}
