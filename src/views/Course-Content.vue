@@ -31,11 +31,16 @@
                     <div class="average-score">
                         <i class="el-icon-medal"/>平均评分：{{ course.averageScore }}分
                     </div>
-                    <div class="join-button">
+                    <div v-if="course.attended" class="attend-button">
+                        <el-button type="primary" size="small" round>
+                            继续学习
+                        </el-button>
+                    </div>
+                    <div v-else class="attend-button">
                         <el-button v-if="course.price !== 0" type="primary" size="small" round>
                             立即购买
                         </el-button>
-                        <el-button v-else type="primary" round>
+                        <el-button v-else type="primary" size="small" round>
                             开始学习
                         </el-button>
                     </div>
@@ -46,16 +51,16 @@
     <el-card class="course-content">
         <el-tabs>
             <el-tab-pane label="章节">
-                <CourseChapter :id="this.$route.params.id"/>
+                <CourseChapter/>
             </el-tab-pane>
             <el-tab-pane label="问答" lazy>
-                <CourseQuestion :id="this.$route.params.id"/>
+                <CourseQuestion/>
             </el-tab-pane>
             <el-tab-pane label="笔记" lazy>
-                <CourseNote :id="this.$route.params.id"/>
+                <CourseNote/>
             </el-tab-pane>
             <el-tab-pane label="评价" lazy>
-                <CourseEvaluation :id="this.$route.params.id"/>
+                <CourseEvaluation/>
             </el-tab-pane>
         </el-tabs>
     </el-card>
@@ -143,7 +148,7 @@ export default {
 .average-score i {
 }
 
-.join-button {
+.attend-button {
     position: absolute;
     bottom: 10px;
     right: 10px;
