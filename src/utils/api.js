@@ -157,3 +157,19 @@ export function getUser(pathVariable, params) {
         params
     })
 }
+
+export function getCoursesOfUser(pathVariable, params) {
+    return request({
+        url: '/users/' + pathVariable + '/courses',
+        method: 'get',
+        params
+    })
+}
+
+export function getNotesOfUser(pathVariable, params) {
+    return request({
+        url: '/users/' + pathVariable + '/notes',
+        method: 'get',
+        params
+    })
+}

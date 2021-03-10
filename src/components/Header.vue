@@ -15,14 +15,32 @@
         </el-col>
         <el-col :span="12">
             <el-row type="flex" justify="end">
-                <router-link :to="{ name: 'User-Home', params: { username: auth.username }}">
-                    <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
-                        {{ auth.fullName }}
-                    </el-avatar>
-                </router-link>
-                <a v-if="auth" href="javascript:" @click="logout">
-                    <i class="el-icon-user"/>注销
-                </a>
+                <el-popover v-if="auth" placement="bottom-end" :width="200">
+                    <template #reference>
+                        <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
+                            {{ auth.fullName }}
+                        </el-avatar>
+                    </template>
+                    <div class="user-popover">
+                        <el-avatar :src="auth.profilePicture" :size="64">
+                            {{ auth.fullName }}
+                        </el-avatar>
+                        <div class="mt-1">
+                            {{ auth.fullName }}
+                        </div>
+                        <div class="mt-2">
+                            <router-link :to="{ name: 'User-Home', params: { username: auth.username }}">
+                                <i class="el-icon-user"/>个人主页
+                            </router-link>
+                            <el-divider direction="vertical"/>
+                            <router-link :to="{ name: 'User-Home', params: { username: auth.username }}">
+                                <i class="el-icon-setting"/>个人设置
+                            </router-link>
+                            <el-divider/>
+                            <el-button type="text" @click="logout">安全退出</el-button>
+                        </div>
+                    </div>
+                </el-popover>
                 <router-link v-else :to="{name: 'Login'}">
                     <i class="el-icon-user"/>登录
                 </router-link>
@@ -38,7 +56,7 @@ import {removeAuth, removeToken} from '/@/utils/auth'
 export default {
     name: "Header",
     computed: mapState([
-        "auth"
+        'auth'
     ]),
     methods: {
         logout() {
@@ -64,5 +82,26 @@ export default {
 
 .profile-picture {
     margin-top: 15px;
+}
+
+.user-popover {
+    text-align: center;
+}
+
+.user-popover a {
+    color: #303133;
+}
+
+.user-popover .el-button {
+    min-height: 20px;
+    padding: 0;
+}
+
+.user-popover .el-button--text {
+    color: #303133;
+}
+
+.user-popover .el-divider--horizontal {
+    margin: 12px 0;
 }
 </style>

@@ -25,19 +25,25 @@
     </div>
     <el-tabs class="mt-2">
         <el-tab-pane label="课程">
-            <el-empty/>
+            <UserCourse/>
         </el-tab-pane>
         <el-tab-pane label="笔记" lazy>
-            <el-empty/>
+            <UserNote/>
         </el-tab-pane>
     </el-tabs>
 </template>
 
 <script>
 import {getUser} from '/@/utils/api'
+import UserCourse from '/@/components/User-Course.vue'
+import UserNote from '/@/components/User-Note.vue'
 
 export default {
     name: "User-Home",
+    components: {
+        UserNote,
+        UserCourse
+    },
     data() {
         return {
             user: {}
