@@ -19,21 +19,23 @@
 
 <script>
 import {getChaptersOfCourse} from '/@/utils/api'
+import {mapState} from 'vuex'
 
 export default {
     name: "Course-Chapter",
-    props: [
-        'id'
-    ],
     data() {
         return {
+            courseId: this.$route.params.id,
             chapters: [],
             chapter: {},
             dialogVisible: false
         }
     },
+    computed: mapState([
+        'auth'
+    ]),
     created() {
-        this.getChapters(this.id)
+        this.getChapters(this.courseId)
     },
     methods: {
         getChapters(id) {
@@ -45,8 +47,12 @@ export default {
         },
         viewChapter(chapter) {
             //todo 权限验证
-            this.chapter = chapter
-            this.dialogVisible = true
+            if (!this.auth) {
+                this.$router.push({name: 'Login'})
+            } else {
+                this.chapter = chapter
+                this.dialogVisible = true
+            }
         }
     }
 }
