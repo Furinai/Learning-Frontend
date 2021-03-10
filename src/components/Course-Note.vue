@@ -33,6 +33,11 @@
             </div>
         </li>
     </ul>
+    <div class="pagination">
+        <el-pagination :hide-on-single-page="true" :pager-count="5" :total="size" background
+                       layout="prev, pager, next" @current-change="handlePageChange">
+        </el-pagination>
+    </div>
     <el-dialog title="新笔记" v-model="dialogVisible" center>
         <el-form ref="note" :model="note" :rules="rules">
             <el-form-item prop="content">
