@@ -81,7 +81,7 @@ export default {
         }
     },
     computed: mapState([
-        "auth"
+        'auth'
     ]),
     created() {
         this.getQuestion()

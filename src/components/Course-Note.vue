@@ -53,11 +53,9 @@ import {createNote, getNotesOfCourse} from '/@/utils/api'
 
 export default {
     name: "Course-Note",
-    props: [
-        'id'
-    ],
     data() {
         return {
+            courseId: this.$route.params.id,
             notes: [],
             size: 0,
             pageNum: null,
@@ -75,14 +73,14 @@ export default {
         }
     },
     computed: mapState([
-        "auth"
+        'auth'
     ]),
     created() {
         this.getNotes()
     },
     methods: {
         getNotes() {
-            getNotesOfCourse(this.id, {pageNum: this.pageNum, onlyOwn: this.onlyOwn}).then(result => {
+            getNotesOfCourse(this.courseId, {pageNum: this.pageNum, onlyOwn: this.onlyOwn}).then(result => {
                 if (result.code === '0000') {
                     this.notes = result.data.list
                     this.size = result.data.size
@@ -93,7 +91,7 @@ export default {
             this.$refs[note].validate((valid) => {
                 if (valid) {
                     this.loading = true
-                    this.note.courseId = this.id
+                    this.note.courseId = this.courseId
                     createNote(this.note).then(result => {
                         if (result.code === '0000') {
                             this.getNotes()
@@ -115,8 +113,12 @@ export default {
             }
         },
         handleSwitchChange(onlyOwn) {
-            this.onlyOwn = onlyOwn
-            this.getNotes()
+            if (this.auth) {
+                this.onlyOwn = onlyOwn
+                this.getNotes()
+            } else {
+                this.$router.push({name: 'Login'})
+            }
         },
         handlePageChange(pageNum) {
             this.pageNum = pageNum

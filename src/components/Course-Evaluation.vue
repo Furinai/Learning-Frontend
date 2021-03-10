@@ -52,11 +52,9 @@ import {createEvaluation, getEvaluationsOfCourse} from '/@/utils/api'
 
 export default {
     name: "Course-Evaluation",
-    props: [
-        'id'
-    ],
     data() {
         return {
+            courseId: this.$route.params.id,
             evaluations: [],
             size: 0,
             pageNum: null,
@@ -72,14 +70,14 @@ export default {
         }
     },
     computed: mapState([
-        "auth"
+        'auth'
     ]),
     created() {
         this.getEvaluations()
     },
     methods: {
         getEvaluations() {
-            getEvaluationsOfCourse(this.id, {pageNum: this.pageNum}).then(result => {
+            getEvaluationsOfCourse(this.courseId, {pageNum: this.pageNum}).then(result => {
                 if (result.code === '0000') {
                     this.evaluations = result.data.list
                     this.size = result.data.size
@@ -90,7 +88,7 @@ export default {
             this.$refs[evaluation].validate((valid) => {
                 if (valid) {
                     this.loading = true
-                    this.evaluation.courseId = this.id
+                    this.evaluation.courseId = this.courseId
                     createEvaluation(this.evaluation).then(result => {
                         if (result.code === '0000') {
                             this.getEvaluations()

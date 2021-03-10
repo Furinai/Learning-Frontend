@@ -67,11 +67,9 @@ import {createQuestion, getQuestionsOfCourse} from '/@/utils/api'
 
 export default {
     name: "Course-Question",
-    props: [
-        'id'
-    ],
     data() {
         return {
+            courseId: this.$route.params.id,
             questions: [],
             size: 0,
             orderBy: 'create_time',
@@ -92,14 +90,14 @@ export default {
         }
     },
     computed: mapState([
-        "auth"
+        'auth'
     ]),
     created() {
         this.getQuestions()
     },
     methods: {
         getQuestions() {
-            getQuestionsOfCourse(this.id, {orderBy: this.orderBy, pageNum: this.pageNum}).then(result => {
+            getQuestionsOfCourse(this.courseId, {orderBy: this.orderBy, pageNum: this.pageNum}).then(result => {
                 if (result.code === '0000') {
                     this.questions = result.data.list
                     this.size = result.data.size
@@ -110,7 +108,7 @@ export default {
             this.$refs[question].validate((valid) => {
                 if (valid) {
                     this.loading = true
-                    this.question.courseId = this.id
+                    this.question.courseId = this.courseId
                     createQuestion(this.question).then(result => {
                         if (result.code === '0000') {
                             this.getQuestions()
