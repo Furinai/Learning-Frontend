@@ -75,16 +75,16 @@ import CourseEvaluation from '/@/components/Course-Evaluation.vue'
 
 export default {
     name: "Course-Content",
-    data() {
-        return {
-            course: {teacher: {}}
-        }
-    },
     components: {
         CourseChapter,
         CourseQuestion,
         CourseNote,
         CourseEvaluation
+    },
+    data() {
+        return {
+            course: {teacher: {}}
+        }
     },
     created() {
         this.getCourse(this.$route.params.id)
