@@ -20,7 +20,7 @@ import {removeAuth, removeToken} from '/@/utils/auth'
 export default {
     name: "Header",
     computed: mapState([
-        "auth"
+        'auth'
     ]),
     methods: {
         logout() {

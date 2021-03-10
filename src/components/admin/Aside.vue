@@ -15,7 +15,7 @@ import {mapState} from 'vuex'
 export default {
     name: "Aside",
     computed: mapState([
-        "auth",
+        'auth',
     ])
 }
 </script>
