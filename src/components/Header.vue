@@ -30,7 +30,7 @@
                             {{ auth.fullName }}
                         </div>
                         <div class="mt-2">
-                            <router-link :to="{ name: 'User-Home', params: { username: auth.username }}">
+                            <router-link :to="{ name: 'User-Homepage', params: { username: auth.username }}">
                                 <i class="el-icon-user"/>个人主页
                             </router-link>
                             <el-divider direction="vertical"/>

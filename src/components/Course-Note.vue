@@ -13,7 +13,7 @@
                 </el-avatar>
                 <div class="note-info">
                     <div class="user-name">
-                        <router-link :to="{ name: 'User-Home', params: { username: note.author.username }}">
+                        <router-link :to="{ name: 'User-Homepage', params: { username: note.author.username }}">
                             {{ note.author.fullName }}
                         </router-link>
                     </div>

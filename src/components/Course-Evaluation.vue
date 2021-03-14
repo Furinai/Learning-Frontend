@@ -13,7 +13,7 @@
                 <div class="evaluation-info">
                     <div class="flex-between">
                         <div class="user-name">
-                            <router-link :to="{ name: 'User-Home', params: { username: evaluation.author.username }}">
+                            <router-link :to="{ name: 'User-Homepage', params: { username: evaluation.author.username }}">
                                 {{ evaluation.author.fullName }}
                             </router-link>
                         </div>

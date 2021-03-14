@@ -20,7 +20,7 @@
                             {{ course.teacher.fullName }}
                         </el-avatar>
                         <span class="teacher-name user-name">
-                             <router-link :to="{ name: 'User-Home', params: { username: course.teacher.username }}">
+                             <router-link :to="{ name: 'User-Homepage', params: { username: course.teacher.username }}">
                                  {{ course.teacher.fullName }}
                              </router-link>
                         </span>

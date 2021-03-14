@@ -17,7 +17,7 @@
                 <div class="question-info">
                     <div class="flex-between">
                         <div class="user-name">
-                            <router-link :to="{ name: 'User-Home', params: { username: question.author.username }}">
+                            <router-link :to="{ name: 'User-Homepage', params: { username: question.author.username }}">
                                 {{ question.author.fullName }}
                             </router-link>
                         </div>

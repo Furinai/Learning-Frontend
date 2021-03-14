@@ -7,7 +7,7 @@
             </el-avatar>
             <div class="question-info">
                 <div class="user-name">
-                    <router-link :to="{ name: 'User-Home', params: { username: question.author.username }}">
+                    <router-link :to="{ name: 'User-Homepage', params: { username: question.author.username }}">
                         {{ question.author.fullName }}
                     </router-link>
                 </div>
@@ -29,7 +29,7 @@
                     </el-avatar>
                     <div class="answer-info">
                         <div class="user-name">
-                            <router-link :to="{ name: 'User-Home', params: { username: answer.author.username }}">
+                            <router-link :to="{ name: 'User-Homepage', params: { username: answer.author.username }}">
                                 {{ answer.author.fullName }}
                             </router-link>
                         </div>
