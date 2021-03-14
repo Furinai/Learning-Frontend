@@ -29,10 +29,6 @@ pre {
     border-bottom: 1px solid #eee;
 }
 
-.list:first-child {
-    padding-top: 0;
-}
-
 .list:last-child {
     padding-bottom: 0;
     border-bottom: 0;

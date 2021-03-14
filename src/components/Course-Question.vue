@@ -9,7 +9,7 @@
         </el-radio-group>
     </div>
     <ul>
-        <li v-for="question in questions" class="question">
+        <li v-for="question in questions" class="list">
             <div class="flex-start">
                 <el-avatar :src="question.author.profilePicture">
                     {{ question.author.fullName }}
@@ -142,15 +142,6 @@ export default {
 </script>
 
 <style>
-.question {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.question:last-child {
-    border-bottom: 0;
-}
-
 .question-info {
     width: 100%;
     margin-left: 10px;

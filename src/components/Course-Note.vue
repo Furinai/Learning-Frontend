@@ -6,7 +6,7 @@
         <el-switch v-model="onlyOwn" active-text="仅看自己的" @change="handleSwitchChange"/>
     </div>
     <ul>
-        <li v-for="note in notes" class="note">
+        <li v-for="note in notes" class="list">
             <div class="flex-start">
                 <el-avatar :src="note.author.profilePicture">
                     {{ note.author.fullName }}
@@ -134,15 +134,6 @@ export default {
 </script>
 
 <style>
-.note {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.note:last-child {
-    border-bottom: 0;
-}
-
 .note-info {
     width: 100%;
     margin-left: 10px;

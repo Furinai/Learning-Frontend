@@ -5,7 +5,7 @@
         </el-button>
     </div>
     <ul>
-        <li v-for="evaluation in evaluations" class="evaluation">
+        <li v-for="evaluation in evaluations" class="list">
             <div class="flex-start">
                 <el-avatar :src="evaluation.author.profilePicture">
                     {{ evaluation.author.fullName }}
@@ -123,15 +123,6 @@ export default {
 </script>
 
 <style>
-.evaluation {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.evaluation:last-child {
-    border-bottom: 0;
-}
-
 .evaluation-info {
     width: 100%;
     margin-left: 10px;

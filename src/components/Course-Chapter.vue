@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="(chapter, index) in chapters" class="chapter flex-between"
+        <li v-for="(chapter, index) in chapters" class="list flex-between"
             @click="viewChapter(chapter)">
             第{{ index + 1 }}章：{{ chapter.title }}
             <span v-if="chapter.videoTime">
@@ -59,15 +59,6 @@ export default {
 </script>
 
 <style>
-.chapter {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.chapter:last-child {
-    border-bottom: 0;
-}
-
 .text-content {
     line-height: 2;
     font-size: 16px;

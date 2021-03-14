@@ -22,7 +22,7 @@
     </el-card>
     <el-card class="answer-list">
         <ul>
-            <li v-for="answer in answers" class="answer">
+            <li v-for="answer in answers" class="list">
                 <div class="flex-start">
                     <el-avatar :src="answer.author.profilePicture">
                         {{ answer.author.fullName }}
@@ -43,7 +43,7 @@
                 </div>
             </li>
         </ul>
-        <div v-if="this.auth" class="answer-form">
+        <div v-if="this.auth" class="answer-form mt-2">
             <el-form ref="form">
                 <el-form-item>
                     <el-input type="textarea" v-model.trim="content" :autosize="{minRows: 2, maxRows: 10}"
@@ -142,15 +142,6 @@ export default {
 
 .answer-list {
     margin-top: 20px;
-}
-
-.answer {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.answer:last-child {
-    border-bottom: 0;
 }
 
 .answer-info {
