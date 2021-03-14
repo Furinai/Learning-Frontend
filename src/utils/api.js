@@ -173,3 +173,14 @@ export function getNotesOfUser(pathVariable, params) {
         params
     })
 }
+
+export function uploadProfilePicture(data) {
+    return request({
+        url: '/profile-pictures',
+        method: 'post',
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        data
+    })
+}

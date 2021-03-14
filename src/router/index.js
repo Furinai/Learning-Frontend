@@ -9,6 +9,7 @@ import CourseList from '/@/views/Course-List.vue'
 import CourseContent from '/@/views/Course-Content.vue'
 import QuestionContent from '/@/views/Question-Content.vue'
 import UserHome from '/@/views/User-Home.vue'
+import UserSetting from '/@/views/User-Setting.vue'
 import Admin from '/@/layout/Admin.vue'
 import AdminIndex from '/@/views/admin/Index.vue'
 import NotFound from '/@/views/NotFound.vue'
@@ -53,6 +54,11 @@ const routes = [
                 path: '/users/:username',
                 name: 'User-Home',
                 component: UserHome
+            },
+            {
+                path: '/users/:username/setting',
+                name: 'User-Setting',
+                component: UserSetting
             }
         ]
     },

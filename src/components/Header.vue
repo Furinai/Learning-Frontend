@@ -17,9 +17,10 @@
             <el-row type="flex" justify="end">
                 <el-popover v-if="auth" placement="bottom-end" :width="200">
                     <template #reference>
-                        <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
-                            {{ auth.fullName }}
-                        </el-avatar>
+                        <el-button type="text">
+                            <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
+                            </el-avatar>
+                        </el-button>
                     </template>
                     <div class="user-popover">
                         <el-avatar :src="auth.profilePicture" :size="64">
@@ -33,7 +34,7 @@
                                 <i class="el-icon-user"/>个人主页
                             </router-link>
                             <el-divider direction="vertical"/>
-                            <router-link :to="{ name: 'User-Home', params: { username: auth.username }}">
+                            <router-link :to="{ name: 'User-Setting', params: { username: auth.username }}">
                                 <i class="el-icon-setting"/>个人设置
                             </router-link>
                             <el-divider/>
@@ -78,10 +79,6 @@ export default {
     color: #333;
     font-size: 20px;
     font-weight: bold;
-}
-
-.profile-picture {
-    margin-top: 15px;
 }
 
 .user-popover {
