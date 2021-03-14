@@ -60,7 +60,7 @@ export default {
                     registerUser(this.user).then(result => {
                         if (result.code === '0000') {
                             this.$message.success("注册成功！")
-                            this.$router.push({name: "Login"})
+                            this.$router.push({name: 'Login'})
                         }
                     }).finally(() =>
                         this.loading = false
