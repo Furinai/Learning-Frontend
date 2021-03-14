@@ -3,7 +3,7 @@
         <el-col v-for="course in courses" :xs="24" :sm="6" class="course-card">
             <router-link :to="{ name: 'Course-Content', params: { id: course.id }}">
                 <el-card :body-style="{ 'padding': '0px', 'min-height': '275px' }">
-                    <el-image :src="course.coverPhotoUrl" class="card-cover-photo"/>
+                    <el-image :src="course.coverPicture" class="card-cover-picture"/>
                     <div class="card-text">
                         <div class="card-course-name">
                             {{ course.name }}

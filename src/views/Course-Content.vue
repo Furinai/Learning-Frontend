@@ -2,7 +2,7 @@
     <el-card>
         <el-row>
             <el-col :sm="12">
-                <el-image :src="course.coverPhotoUrl" class="cover-photo"/>
+                <el-image :src="course.coverPicture" class="cover-picture"/>
             </el-col>
             <el-col :sm="12">
                 <div class="course-info">
@@ -29,7 +29,13 @@
                         简介：{{ course.description }}
                     </div>
                     <div class="average-score">
-                        <i class="el-icon-medal"/>平均评分：{{ course.averageScore }}分
+                        <i class="el-icon-medal"/>平均评分：
+                        <span v-if="course.averageScore">
+                            {{ course.averageScore }}分
+                        </span>
+                        <span v-else>
+                            暂无评分
+                        </span>
                     </div>
                     <div v-if="course.attended" class="attend-button">
                         <el-button type="primary" size="small" round>
@@ -102,7 +108,7 @@ export default {
 </script>
 
 <style>
-.cover-photo {
+.cover-picture {
     height: 400px;
     width: 100%;
 }
@@ -112,7 +118,7 @@ export default {
 }
 
 .course-name {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .course-price {

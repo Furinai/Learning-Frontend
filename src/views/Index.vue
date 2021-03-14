@@ -2,7 +2,7 @@
     <el-carousel ref="carousel" type="card" height="400px">
         <el-carousel-item v-for="course in carousel">
             <router-link :to="{ name: 'Course-Content', params: { id: course.id }}">
-                <el-image :src="course.coverPhotoUrl" class="carousel-picture"/>
+                <el-image :src="course.coverPicture" class="carousel-picture"/>
             </router-link>
         </el-carousel-item>
     </el-carousel>
@@ -25,7 +25,7 @@
         <el-col v-for="course in courses" :xs="24" :sm="6" class="course-card">
             <router-link :to="{ name: 'Course-Content', params: { id: course.id }}">
                 <el-card :body-style="{ 'padding': '0px', 'min-height': '300px' }">
-                    <el-image :src="course.coverPhotoUrl" class="card-cover-photo"/>
+                    <el-image :src="course.coverPicture" class="card-cover-picture"/>
                     <div class="card-text">
                         <div class="card-course-name">
                             {{ course.name }}
