@@ -96,10 +96,10 @@ export default {
         },
         handleCommand(command, course) {
             switch (command) {
-                case "updateCourse":
+                case 'updateCourse':
                     this.updateCourse(course)
                     break
-                case "manageChapter":
+                case 'manageChapter':
                     this.manageChapter(course)
                     break
             }

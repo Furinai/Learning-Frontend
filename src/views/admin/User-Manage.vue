@@ -227,10 +227,10 @@ export default {
         },
         handleCommand(command, row) {
             switch (command) {
-                case "updateUser":
+                case 'updateUser':
                     this.updateUser(row)
                     break
-                case "deleteUser":
+                case 'deleteUser':
                     this.deleteUser(row)
                     break
             }
