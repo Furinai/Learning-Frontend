@@ -68,7 +68,7 @@ export default {
             })
         },
         getCourses(categoryId) {
-            getCourses({pageSize: 8, categoryId, orderBy: 'average_score'}).then(result => {
+            getCourses({pageSize: 8, categoryId, approved: true, orderBy: 'average_score'}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
                     if (this.carousel.length === 0) {

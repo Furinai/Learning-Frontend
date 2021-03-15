@@ -78,6 +78,7 @@ export default {
             getCourses({
                 pageSize: this.pageSize,
                 pageNum: this.pageNum,
+                approved: true,
                 orderBy: this.orderBy,
                 categoryId: this.categoryId
             }).then(result => {
