@@ -83,6 +83,10 @@ pre {
     color: #409EFF;
 }
 
+.el-dropdown-link {
+    font-size: 20px;
+}
+
 .flex-between {
     display: flex;
     justify-content: space-between;
