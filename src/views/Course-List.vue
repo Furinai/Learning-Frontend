@@ -47,6 +47,7 @@
 
 <script>
 import {getCategories, getCourses} from '/@/utils/api'
+import {buildTree} from '/@/utils/processing'
 
 export default {
     name: "Course-List",
@@ -69,20 +70,7 @@ export default {
         getCategories() {
             getCategories({pageSize: 0}).then(result => {
                 if (result.code === '0000') {
-                    let data = result.data.list
-                    let map = new Map()
-                    for (let category of data) {
-                        category.children = []
-                        map.set(category.id, category)
-                    }
-                    for (let [, category] of map) {
-                        if (category.parentId === 0) {
-                            this.categories.push(category)
-                        } else {
-                            let parent = map.get(category.parentId)
-                            parent.children.push(category)
-                        }
-                    }
+                    this.categories = buildTree(result.data.list)
                 }
             })
         },
