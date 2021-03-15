@@ -23,6 +23,14 @@ export function getUsers(params) {
     })
 }
 
+export function getUser(pathVariable, params) {
+    return request({
+        url: '/users/' + pathVariable,
+        method: 'get',
+        params
+    })
+}
+
 export function createUser(data) {
     return request({
         url: '/users',
@@ -86,13 +94,6 @@ export function updateCourse(data) {
     })
 }
 
-export function deleteCourse(pathVariable) {
-    return request({
-        url: '/courses/' + pathVariable,
-        method: 'delete'
-    })
-}
-
 export function getChaptersOfCourse(pathVariable, params) {
     return request({
         url: '/courses/' + pathVariable + '/chapters',
@@ -125,11 +126,34 @@ export function getEvaluationsOfCourse(pathVariable, params) {
     })
 }
 
-export function createQuestion(data) {
+export function getChapter(pathVariable, params) {
     return request({
-        url: '/questions',
+        url: '/chapters/' + pathVariable,
+        method: 'get',
+        params
+    })
+}
+
+export function createChapter(data) {
+    return request({
+        url: '/chapters',
         method: 'post',
         data
+    })
+}
+
+export function updateChapter(data) {
+    return request({
+        url: '/chapters',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteChapter(pathVariable) {
+    return request({
+        url: '/chapters/' + pathVariable,
+        method: 'delete'
     })
 }
 
@@ -138,6 +162,14 @@ export function getQuestion(pathVariable, params) {
         url: '/questions/' + pathVariable,
         method: 'get',
         params
+    })
+}
+
+export function createQuestion(data) {
+    return request({
+        url: '/questions',
+        method: 'post',
+        data
     })
 }
 
@@ -170,14 +202,6 @@ export function createEvaluation(data) {
         url: '/evaluations',
         method: 'post',
         data
-    })
-}
-
-export function getUser(pathVariable, params) {
-    return request({
-        url: '/users/' + pathVariable,
-        method: 'get',
-        params
     })
 }
 
@@ -215,6 +239,18 @@ export function uploadCoverPicture(data) {
         headers: {
             'Content-Type': 'multipart/form-data'
         },
+        data
+    })
+}
+
+export function uploadVideo(data, onUploadProgress) {
+    return request({
+        url: '/videos',
+        method: 'post',
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        onUploadProgress,
         data
     })
 }
