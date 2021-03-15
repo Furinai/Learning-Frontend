@@ -21,7 +21,7 @@
         <el-form-item prop="coverPicture" label="封面">
             <el-upload class="cover-picture-uploader" action="" :show-file-list="false"
                        :http-request="uploadCoverPicture">
-                <img v-if="course.coverPicture" :src="course.coverPicture" class="cover-picture" alt="封面">
+                <img v-if="course.coverPicture" :src="course.coverPicture" class="form-cover-picture" alt="封面">
                 <i v-else class="el-icon-plus"></i>
             </el-upload>
         </el-form-item>
@@ -98,7 +98,7 @@ export default {
         handleSubmit(ref) {
             if (this.action === 'create') {
                 this.createCourse(ref)
-            } else {
+            } else if (this.action === 'update') {
                 this.updateCourse(ref)
             }
         },
@@ -131,7 +131,7 @@ export default {
 </script>
 
 <style>
-.cover-picture {
+.form-cover-picture {
     width: 350px;
     height: 200px;
     display: block;
