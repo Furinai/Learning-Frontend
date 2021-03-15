@@ -10,6 +10,12 @@ import CourseContent from '/@/views/Course-Content.vue'
 import QuestionContent from '/@/views/Question-Content.vue'
 import UserHomepage from '/@/views/User-Homepage.vue'
 import UserSetting from '/@/views/User-Setting.vue'
+import TeachingCourseList from '/@/views/teaching/Course-List.vue'
+import TeachingCourseCreate from '/@/views/teaching/Course-Create.vue'
+import TeachingCourseUpdate from '/@/views/teaching/Course-Update.vue'
+import TeachingChapterList from '/@/views/teaching/Chapter-List.vue'
+import TeachingChapterCreate from '/@/views/teaching/Chapter-Create.vue'
+import TeachingChapterUpdate from '/@/views/teaching/Chapter-Update.vue'
 import Admin from '/@/layout/Admin.vue'
 import AdminIndex from '/@/views/admin/Index.vue'
 import NotFound from '/@/views/NotFound.vue'
@@ -59,6 +65,36 @@ const routes = [
                 path: '/users/:username/setting',
                 name: 'User-Setting',
                 component: UserSetting
+            },
+            {
+                path: '/teaching/course/list',
+                name: 'Teaching-Course-List',
+                component: TeachingCourseList
+            },
+            {
+                path: '/teaching/course/create',
+                name: 'Teaching-Course-Create',
+                component: TeachingCourseCreate
+            },
+            {
+                path: '/teaching/course/update',
+                name: 'Teaching-Course-Update',
+                component: TeachingCourseUpdate
+            },
+            {
+                path: '/teaching/chapter/list',
+                name: 'Teaching-Chapter-List',
+                component: TeachingChapterList
+            },
+            {
+                path: '/teaching/chapter/create',
+                name: 'Teaching-Chapter-Create',
+                component: TeachingChapterCreate
+            },
+            {
+                path: '/teaching/chapter/update',
+                name: 'Teaching-Chapter-Update',
+                component: TeachingChapterUpdate
             }
         ]
     },

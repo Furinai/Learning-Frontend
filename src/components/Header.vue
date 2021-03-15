@@ -15,9 +15,12 @@
         </el-col>
         <el-col :span="12">
             <el-row type="flex" justify="end">
+                <router-link v-if="auth.role.name === '教师'" :to="{name: 'Teaching-Course-List'}">
+                    <i class="el-icon-suitcase"/>教学管理
+                </router-link>
                 <el-popover v-if="auth" placement="bottom-end" :width="200">
                     <template #reference>
-                        <el-button type="text">
+                        <el-button type="text" class="ml-2">
                             <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
                             </el-avatar>
                         </el-button>
@@ -64,7 +67,7 @@ export default {
             this.$confirm("确定注销？", "提示", {type: "warning"}).then(() => {
                     removeAuth()
                     removeToken()
-                    this.$router.push({name: "Login"})
+                    this.$router.push({name: 'Login'})
                 }
             ).catch(() => {
                 this.$message.warning("已取消！")

@@ -70,6 +70,29 @@ export function getCourse(pathVariable, params) {
     })
 }
 
+export function createCourse(data) {
+    return request({
+        url: '/courses',
+        method: 'post',
+        data
+    })
+}
+
+export function updateCourse(data) {
+    return request({
+        url: '/courses',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteCourse(pathVariable) {
+    return request({
+        url: '/courses/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function getChaptersOfCourse(pathVariable, params) {
     return request({
         url: '/courses/' + pathVariable + '/chapters',
@@ -177,6 +200,17 @@ export function getNotesOfUser(pathVariable, params) {
 export function uploadProfilePicture(data) {
     return request({
         url: '/profile-pictures',
+        method: 'post',
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        data
+    })
+}
+
+export function uploadCoverPicture(data) {
+    return request({
+        url: '/cover-pictures',
         method: 'post',
         headers: {
             'Content-Type': 'multipart/form-data'
