@@ -2,7 +2,11 @@
     <ul>
         <li v-for="(chapter, index) in chapters" class="list flex-between"
             @click="viewChapter(chapter)">
-            第{{ index + 1 }}章：{{ chapter.title }}
+            <span class="chapter-icon">
+                <i v-if="chapter.type ==='video'" class="el-icon-video-play"/>
+                <i v-if="chapter.type ==='text'" class="el-icon-document"/>
+                第{{ index + 1 }}章：{{ chapter.title }}
+            </span>
             <span v-if="chapter.videoTime">
                 <i class="el-icon-time"/>{{ chapter.videoTime }}
             </span>
@@ -11,7 +15,7 @@
     <el-dialog :title="chapter.title" v-model="dialogVisible" width="760px" center destroy-on-close>
         <video v-if="chapter.videoUrl" :src="chapter.videoUrl" height="405" width="720"
                controls controlslist="nodownload" disablePictureInPicture/>
-        <pre v-if="chapter.textContent" class="text-content">
+        <pre v-else class="text-content">
             {{ chapter.textContent }}
         </pre>
     </el-dialog>
@@ -59,6 +63,10 @@ export default {
 </script>
 
 <style>
+.chapter-icon i {
+    font-size: 20px;
+}
+
 .text-content {
     line-height: 2;
     font-size: 16px;
