@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapState} from 'vuex'
 import {createEvaluation, getEvaluationsOfCourse} from '/@/utils/api'
 
 export default {
