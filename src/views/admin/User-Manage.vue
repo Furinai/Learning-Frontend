@@ -89,6 +89,8 @@ export default {
                         this.users.splice(index, 1)
                         this.$message.success("删除成功！")
                     }
+                }).catch(() => {
+                    this.$message.warning("已取消！")
                 })
             })
         },
