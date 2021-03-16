@@ -68,9 +68,9 @@ export default {
     },
     methods: {
         getCategories() {
-            getCategories({pageSize: 0}).then(result => {
+            getCategories().then(result => {
                 if (result.code === '0000') {
-                    this.categories = buildTree(result.data.list)
+                    this.categories = buildTree(result.data)
                 }
             })
         },

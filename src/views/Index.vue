@@ -63,8 +63,8 @@ export default {
     },
     methods: {
         getCategories() {
-            getCategories({pageSize: 0}).then(result => {
-                this.categories = buildTree(result.data.list)
+            getCategories().then(result => {
+                this.categories = buildTree(result.data)
             })
         },
         getCourses(categoryId) {
