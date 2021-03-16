@@ -40,7 +40,7 @@ import {createChapter, updateChapter, uploadVideo} from '/@/utils/api'
 export default {
     name: "Chapter-Form",
     props: [
-        'action',
+        'editMode',
         'chapter',
         'preview'
     ],
@@ -83,9 +83,9 @@ export default {
             }).finally(() => this.loading = false)
         },
         handleSubmit(ref) {
-            if (this.action === 'create') {
+            if (this.editMode === 'create') {
                 this.createChapter(ref)
-            } else if (this.action === 'update') {
+            } else if (this.editMode === 'update') {
                 this.updateChapter(ref)
             }
         },

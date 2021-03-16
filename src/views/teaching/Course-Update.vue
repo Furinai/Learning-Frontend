@@ -1,5 +1,5 @@
 <template>
-    <CourseForm action="update" :course="course"/>
+    <CourseForm editMode="update" :course="course"/>
 </template>
 
 <script>

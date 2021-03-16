@@ -1,5 +1,5 @@
 <template>
-    <ChapterForm action="create" :chapter="chapter"/>
+    <ChapterForm editMode="create" :chapter="chapter"/>
 </template>
 
 <script>

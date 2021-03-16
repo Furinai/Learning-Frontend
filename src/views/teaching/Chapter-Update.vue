@@ -1,5 +1,5 @@
 <template>
-    <ChapterForm action="update" :chapter="chapter" :preview="preview"/>
+    <ChapterForm editMode="update" :chapter="chapter" :preview="preview"/>
 </template>
 
 <script>

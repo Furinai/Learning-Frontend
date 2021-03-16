@@ -43,7 +43,7 @@ import {buildTree} from '/@/utils/processing'
 export default {
     name: "Course-Form",
     props: [
-        'action',
+        'editMode',
         'course'
     ],
     data() {
@@ -94,9 +94,9 @@ export default {
             })
         },
         handleSubmit(ref) {
-            if (this.action === 'create') {
+            if (this.editMode === 'create') {
                 this.createCourse(ref)
-            } else if (this.action === 'update') {
+            } else if (this.editMode === 'update') {
                 this.updateCourse(ref)
             }
         },
