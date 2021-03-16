@@ -26,10 +26,10 @@
             </el-upload>
         </el-form-item>
         <el-form-item class="text-right">
-            <el-button size="small" @click="handleSubmit('course')" type="primary" :loading="loading">
+            <el-button size="small" @click="onSubmit('course')" type="primary" :loading="loading">
                 确认
             </el-button>
-            <el-button size="small" @click="this.$router.back()">
+            <el-button v-if="editMode" size="small" @click="onCancel">
                 取消
             </el-button>
         </el-form-item>
@@ -43,8 +43,9 @@ import {buildTree} from '/@/utils/processing'
 export default {
     name: "Course-Form",
     props: [
+        'course',
         'editMode',
-        'course'
+        'separatePage'
     ],
     data() {
         return {
@@ -93,36 +94,38 @@ export default {
                 }
             })
         },
-        handleSubmit(ref) {
+        onSubmit(ref) {
             if (this.editMode === 'create') {
-                this.createCourse(ref)
-            } else if (this.editMode === 'update') {
-                this.updateCourse(ref)
+                this.$refs[ref].validate((valid) => {
+                    if (valid) {
+                        this.loading = true
+                        createCourse(this.course).then(result => {
+                            if (result.code === '0000') {
+                                this.$message.success('创建成功！')
+                            }
+                        }).finally(() => this.loading = false)
+                    }
+                })
+            }
+            if (this.editMode === 'update') {
+                this.$refs[ref].validate((valid) => {
+                    if (valid) {
+                        this.loading = true
+                        updateCourse(this.course).then(result => {
+                            if (result.code === '0000') {
+                                this.$message.success('更新成功！')
+                            }
+                        }).finally(() => this.loading = false)
+                    }
+                })
             }
         },
-        createCourse(course) {
-            this.$refs[course].validate((valid) => {
-                if (valid) {
-                    this.loading = true
-                    createCourse(this.course).then(result => {
-                        if (result.code === '0000') {
-                            this.$message.success('创建成功！')
-                        }
-                    }).finally(() => this.loading = false)
-                }
-            })
-        },
-        updateCourse(course) {
-            this.$refs[course].validate((valid) => {
-                if (valid) {
-                    this.loading = true
-                    updateCourse(this.course).then(result => {
-                        if (result.code === '0000') {
-                            this.$message.success('更新成功！')
-                        }
-                    }).finally(() => this.loading = false)
-                }
-            })
+        onCancel() {
+            if (this.separatePage) {
+                this.$router.back()
+            } else {
+                this.$emit('cancel')
+            }
         }
     }
 }

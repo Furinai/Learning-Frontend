@@ -1,5 +1,5 @@
 <template>
-    <CourseForm editMode="create" :course="course"/>
+    <CourseForm :course="course" editMode="create" separatePage="true"/>
 </template>
 
 <script>

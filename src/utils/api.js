@@ -156,6 +156,13 @@ export function updateCourse(data) {
     })
 }
 
+export function deleteCourse(pathVariable) {
+    return request({
+        url: '/courses/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function getChaptersOfCourse(pathVariable, params) {
     return request({
         url: '/courses/' + pathVariable + '/chapters',
