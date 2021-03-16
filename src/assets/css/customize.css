@@ -52,7 +52,7 @@ pre {
 }
 
 .el-aside > .el-menu {
-    height: 100vh;
+    height: 100%;
 }
 
 .el-menu .el-scrollbar__wrap {
