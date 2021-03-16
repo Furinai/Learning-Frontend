@@ -40,14 +40,14 @@ import {createChapter, updateChapter, uploadVideo} from '/@/utils/api'
 export default {
     name: "Chapter-Form",
     props: [
-        'action'
+        'action',
+        'chapter',
+        'preview'
     ],
     data() {
         return {
-            chapter: {type: 'video'},
             loading: false,
             progress: 0,
-            preview: null,
             rules: {
                 title: [
                     {required: true, message: '请输入标题', trigger: 'blur'},

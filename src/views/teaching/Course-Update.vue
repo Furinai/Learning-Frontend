@@ -1,5 +1,5 @@
 <template>
-    <CourseForm action="update" ref="courseForm"/>
+    <CourseForm action="update" :course="course"/>
 </template>
 
 <script>
@@ -11,7 +11,8 @@ export default {
     components: {CourseForm},
     data() {
         return {
-            courseId: this.$route.query.courseId
+            courseId: this.$route.query.courseId,
+            course: {}
         }
     },
     created() {
@@ -21,7 +22,7 @@ export default {
         getCourse() {
             getCourse(this.courseId).then(result => {
                 if (result.code === '0000') {
-                    this.$refs['courseForm'].course = result.data
+                    this.course = result.data
                 }
             })
         }

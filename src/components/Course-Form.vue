@@ -43,11 +43,11 @@ import {buildTree} from '/@/utils/processing'
 export default {
     name: "Course-Form",
     props: [
-        'action'
+        'action',
+        'course'
     ],
     data() {
         return {
-            course: {categories: []},
             categories: [],
             loading: false,
             rules: {

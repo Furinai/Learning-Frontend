@@ -1,5 +1,5 @@
 <template>
-    <ChapterForm action="update" ref="chapterForm"/>
+    <ChapterForm action="update" :chapter="chapter" :preview="preview"/>
 </template>
 
 <script>
@@ -11,7 +11,9 @@ export default {
     components: {ChapterForm},
     data() {
         return {
-            chapterId: this.$route.query.chapterId
+            chapterId: this.$route.query.chapterId,
+            chapter: {},
+            preview: null,
         }
     },
     created() {
@@ -21,8 +23,8 @@ export default {
         getChapter() {
             getChapter(this.chapterId).then(result => {
                 if (result.code === '0000') {
-                    this.$refs['chapterForm'].chapter = result.data
-                    this.$refs['chapterForm'].preview = result.data.videoUrl
+                    this.chapter = result.data
+                    this.preview = this.chapter.videoUrl
                 }
             })
         }
