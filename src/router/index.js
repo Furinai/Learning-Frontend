@@ -20,6 +20,11 @@ import Admin from '/@/layout/Admin.vue'
 import AdminIndex from '/@/views/admin/Index.vue'
 import CategoryManage from '/@/views/admin/Category-Manage.vue'
 import CourseManage from '/@/views/admin/Course-Manage.vue'
+import ChapterManage from '/@/views/admin/Chapter-Manage.vue'
+import QuestionManage from '/@/views/admin/Question-Manage.vue'
+import AnswerManage from '/@/views/admin/Answer-Manage.vue'
+import EvaluationManage from '/@/views/admin/Evaluation-Manage.vue'
+import NoteManage from '/@/views/admin/Note-Manage.vue'
 import UserManage from '/@/views/admin/User-Manage.vue'
 import RoleManage from '/@/views/admin/Role-Manage.vue'
 import NotFound from '/@/views/NotFound.vue'
@@ -152,6 +157,31 @@ const routes = [
                 path: 'course/manage',
                 name: 'Course-Manage',
                 component: CourseManage
+            },
+            {
+                path: 'chapter/manage',
+                name: 'Chapter-Manage',
+                component: ChapterManage
+            },
+            {
+                path: 'question/manage',
+                name: 'Question-Manage',
+                component: QuestionManage
+            },
+            {
+                path: 'answer/manage',
+                name: 'Answer-Manage',
+                component: AnswerManage
+            },
+            {
+                path: 'evaluation/manage',
+                name: 'Evaluation-Manage',
+                component: EvaluationManage
+            },
+            {
+                path: 'note/manage',
+                name: 'Note-Manage',
+                component: NoteManage
             },
             {
                 path: 'user/manage',

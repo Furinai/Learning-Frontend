@@ -23,8 +23,12 @@
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu>
-                                <el-dropdown-item command="updateCourse">编辑</el-dropdown-item>
-                                <el-dropdown-item command="deleteCourse">删除</el-dropdown-item>
+                                <el-dropdown-item command="updateCourse">编辑课程</el-dropdown-item>
+                                <el-dropdown-item command="deleteCourse">删除课程</el-dropdown-item>
+                                <el-dropdown-item command="manageChapter">管理章节</el-dropdown-item>
+                                <el-dropdown-item command="manageQuestion">管理问题</el-dropdown-item>
+                                <el-dropdown-item command="manageEvaluation">管理评价</el-dropdown-item>
+                                <el-dropdown-item command="manageNote">管理笔记</el-dropdown-item>
                             </el-dropdown-menu>
                         </template>
                     </el-dropdown>
@@ -40,9 +44,8 @@
 </template>
 
 <script>
-import {deleteCourse, getCourses} from '/@/utils/api'
+import {deleteCourse, getCourse, getCourses} from '/@/utils/api'
 import CourseForm from '/@/components/Course-Form.vue'
-import {getCourse} from "../../utils/api";
 
 export default {
     name: "Course-Manage",
@@ -103,6 +106,18 @@ export default {
                     break
                 case 'deleteCourse':
                     this.deleteCourse(row)
+                    break
+                case 'manageChapter':
+                    this.$router.push({name: 'Chapter-Manage', query: {courseId: row.id}})
+                    break
+                case 'manageQuestion':
+                    this.$router.push({name: 'Question-Manage', query: {courseId: row.id}})
+                    break
+                case 'manageEvaluation':
+                    this.$router.push({name: 'Evaluation-Manage', query: {courseId: row.id}})
+                    break
+                case 'manageNote':
+                    this.$router.push({name: 'Note-Manage', query: {courseId: row.id}})
                     break
             }
         },

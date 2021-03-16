@@ -24,10 +24,10 @@
                       maxlength="500" show-word-limit/>
         </el-form-item>
         <el-form-item class="text-right">
-            <el-button size="small" @click="handleSubmit('chapter')" type="primary" :loading="loading">
+            <el-button size="small" @click="onSubmit('chapter')" type="primary" :loading="loading">
                 确认
             </el-button>
-            <el-button size="small" @click="this.$router.back()">
+            <el-button v-if="editMode" size="small" @click="onCancel">
                 取消
             </el-button>
         </el-form-item>
@@ -42,7 +42,8 @@ export default {
     props: [
         'editMode',
         'chapter',
-        'preview'
+        'preview',
+        'separatePage'
     ],
     data() {
         return {
@@ -82,51 +83,53 @@ export default {
                 }
             }).finally(() => this.loading = false)
         },
-        handleSubmit(ref) {
+        onSubmit(ref) {
             if (this.editMode === 'create') {
-                this.createChapter(ref)
-            } else if (this.editMode === 'update') {
-                this.updateChapter(ref)
+                this.$refs[ref].validate((valid) => {
+                    if (valid) {
+                        if (this.chapter.type === 'video') {
+                            if (!this.$refs['video']) {
+                                return
+                            } else {
+                                this.chapter.videoTime = this.$refs['video'].duration * 1000
+                            }
+                        }
+                        this.loading = true
+                        this.chapter.courseId = this.$route.query.courseId
+                        createChapter(this.chapter).then(result => {
+                            if (result.code === '0000') {
+                                this.$message.success('创建成功！')
+                            }
+                        }).finally(() => this.loading = false)
+                    }
+                })
+            }
+            if (this.editMode === 'update') {
+                this.$refs[ref].validate((valid) => {
+                    if (valid) {
+                        this.loading = true
+                        updateChapter(this.chapter).then(result => {
+                            if (result.code === '0000') {
+                                this.$message.success('更新成功！')
+                            }
+                        }).finally(() => this.loading = false)
+                    }
+                })
             }
         },
-        createChapter(chapter) {
-            if (this.chapter.type === 'video') {
-                if (!this.$refs['video']) {
-                    return
-                } else {
-                    this.chapter.videoTime = this.$refs['video'].duration * 1000
-                }
+        onCancel() {
+            if (this.separatePage) {
+                this.$router.back()
+            } else {
+                this.$emit('cancel')
             }
-            this.$refs[chapter].validate((valid) => {
-                if (valid) {
-                    this.loading = true
-                    this.chapter.courseId = this.$route.query.courseId
-                    createChapter(this.chapter).then(result => {
-                        if (result.code === '0000') {
-                            this.$message.success('创建成功！')
-                        }
-                    }).finally(() => this.loading = false)
-                }
-            })
-        },
-        updateChapter(chapter) {
-            this.$refs[chapter].validate((valid) => {
-                if (valid) {
-                    this.loading = true
-                    updateChapter(this.chapter).then(result => {
-                        if (result.code === '0000') {
-                            this.$message.success('更新成功！')
-                        }
-                    }).finally(() => this.loading = false)
-                }
-            })
         }
     }
 }
 </script>
 
 <style>
-.is-error .video-uploader > .el-upload {
+.is-error .video-uploader  .el-upload {
     border: 1px dashed #F56C6C;
 }
 
