@@ -101,6 +101,29 @@ export function getCategories(params) {
     })
 }
 
+export function createCategory(data) {
+    return request({
+        url: '/categories',
+        method: 'post',
+        data
+    })
+}
+
+export function updateCategory(data) {
+    return request({
+        url: '/categories',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteCategory(pathVariable) {
+    return request({
+        url: '/categories/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function getCourses(params) {
     return request({
         url: '/courses',
