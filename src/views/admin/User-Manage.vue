@@ -74,7 +74,7 @@
             <el-table-column align="center" label="性别" prop="gender" width="100"/>
             <el-table-column align="center" label="角色" prop="role.name" width="150"/>
             <el-table-column align="center" label="操作" width="150px">
-                <template #default="scope" #header>
+                <template #header>
                     <el-button size="mini" type="primary" @click="createUser">新增</el-button>
                 </template>
                 <template #default="scope">
