@@ -18,16 +18,20 @@ import TeachingChapterCreate from '/@/views/teaching/Chapter-Create.vue'
 import TeachingChapterUpdate from '/@/views/teaching/Chapter-Update.vue'
 import Admin from '/@/layout/Admin.vue'
 import AdminIndex from '/@/views/admin/Index.vue'
+import CategoryManage from '/@/views/admin/Category-Manage.vue'
+import CourseManage from '/@/views/admin/Course-Manage.vue'
+import UserManage from '/@/views/admin/User-Manage.vue'
+import RoleManage from '/@/views/admin/Role-Manage.vue'
 import NotFound from '/@/views/NotFound.vue'
 
 const routes = [
     {
-        path: '/',
+        path: '',
         name: 'Portal',
         component: Portal,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'Index',
                 component: Index
             },
@@ -135,9 +139,29 @@ const routes = [
         },
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'Admin-Index',
                 component: AdminIndex
+            },
+            {
+                path: 'category/manage',
+                name: 'Category-Manage',
+                component: CategoryManage
+            },
+            {
+                path: 'course/manage',
+                name: 'Course-Manage',
+                component: CourseManage
+            },
+            {
+                path: 'user/manage',
+                name: 'User-Manage',
+                component: UserManage
+            },
+            {
+                path: 'role/manage',
+                name: 'Role-Manage',
+                component: RoleManage
             }
         ]
     },
@@ -152,7 +176,7 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
     if (to.meta.authRequired) {
         if (!store.state.auth) {
             return {name: 'Login', query: {redirect: to.fullPath}}

@@ -1,54 +1,22 @@
 <template>
-    <div class="nav-bar">
-        <ul class="nav-list">
-            <li v-if="auth" class="nav">
-                欢迎，{{ auth.fullName }}，
-            </li>
-            <li class="nav">
-                <a href="javascript:" @click="logout">
-                    退出登录
-                </a>
-            </li>
-        </ul>
+    <div class="flex-end">
+        欢迎，{{ auth.fullName }}，
+        <router-link :to="{name: 'Index'}">
+            退出
+        </router-link>
     </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-import {removeAuth, removeToken} from '/@/utils/auth'
 
 export default {
-    name: "Header",
+    name: "Admin-Header",
     computed: mapState([
         'auth'
-    ]),
-    methods: {
-        logout() {
-            this.$confirm("确定注销？", "提示", {type: "warning"}).then(() => {
-                    removeAuth()
-                    removeToken()
-                    this.$router.push({name: 'Login'})
-                }
-            ).catch(() => {
-                this.$message.warning("已取消！")
-            })
-        }
-    },
+    ])
 }
 </script>
 
 <style>
-.nav-bar {
-    display: flex;
-    margin: auto;
-}
-
-.nav-list {
-    margin-left: auto;
-    display: flex;
-}
-
-.nav {
-    margin-left: 10px;
-}
 </style>

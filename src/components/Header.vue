@@ -15,8 +15,11 @@
         </el-col>
         <el-col :span="12">
             <el-row v-if="auth" type="flex" justify="end">
-                <router-link v-if="auth.role.name === '教师'" :to="{name: 'Teaching-Course-List'}">
+                <router-link v-if="auth.role.name !== '学生'" :to="{name: 'Teaching-Course-List'}">
                     <i class="el-icon-suitcase"/>教学管理
+                </router-link>
+                <router-link v-if="auth.role.name === '管理员'" :to="{name: 'Admin-Index'}">
+                    <i class="el-icon-monitor"/>后台管理
                 </router-link>
                 <el-popover placement="bottom-end" :width="200">
                     <template #reference>

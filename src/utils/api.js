@@ -54,6 +54,45 @@ export function deleteUser(pathVariable) {
     })
 }
 
+export function getRoles(params) {
+    return request({
+        url: '/roles',
+        method: 'get',
+        params
+    })
+}
+
+export function getRole(pathVariable, params) {
+    return request({
+        url: '/roles/' + pathVariable,
+        method: 'get',
+        params
+    })
+}
+
+export function createRole(data) {
+    return request({
+        url: '/roles',
+        method: 'post',
+        data
+    })
+}
+
+export function updateRole(data) {
+    return request({
+        url: '/roles',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteRole(pathVariable) {
+    return request({
+        url: '/roles/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function getCategories(params) {
     return request({
         url: '/categories',
