@@ -64,37 +64,64 @@ const routes = [
             {
                 path: '/users/:username/setting',
                 name: 'User-Setting',
-                component: UserSetting
+                component: UserSetting,
+                meta: {
+                    authRequired: true
+                }
             },
             {
                 path: '/teaching/course/list',
                 name: 'Teaching-Course-List',
-                component: TeachingCourseList
+                component: TeachingCourseList,
+                meta: {
+                    authRequired: true,
+                    rolePermitted: ['教师', '管理员']
+                }
             },
             {
                 path: '/teaching/course/create',
                 name: 'Teaching-Course-Create',
-                component: TeachingCourseCreate
+                component: TeachingCourseCreate,
+                meta: {
+                    authRequired: true,
+                    rolePermitted: ['教师', '管理员']
+                }
             },
             {
                 path: '/teaching/course/update',
                 name: 'Teaching-Course-Update',
-                component: TeachingCourseUpdate
+                component: TeachingCourseUpdate,
+                meta: {
+                    authRequired: true,
+                    rolePermitted: ['教师', '管理员']
+                }
             },
             {
                 path: '/teaching/chapter/list',
                 name: 'Teaching-Chapter-List',
-                component: TeachingChapterList
+                component: TeachingChapterList,
+                meta: {
+                    authRequired: true,
+                    rolePermitted: ['教师', '管理员']
+                }
             },
             {
                 path: '/teaching/chapter/create',
                 name: 'Teaching-Chapter-Create',
-                component: TeachingChapterCreate
+                component: TeachingChapterCreate,
+                meta: {
+                    authRequired: true,
+                    rolePermitted: ['教师', '管理员']
+                }
             },
             {
                 path: '/teaching/chapter/update',
                 name: 'Teaching-Chapter-Update',
-                component: TeachingChapterUpdate
+                component: TeachingChapterUpdate,
+                meta: {
+                    authRequired: true,
+                    rolePermitted: ['教师', '管理员']
+                }
             }
         ]
     },
@@ -102,6 +129,10 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component: Admin,
+        meta: {
+            authRequired: true,
+            rolePermitted: ['管理员']
+        },
         children: [
             {
                 path: '/',
@@ -122,13 +153,17 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-    if (to.meta.requiresAuth) {
+    if (to.meta.authRequired) {
         if (!store.state.auth) {
             router.push({name: 'Login'})
             return false
         }
-        if (to.meta.role !== store.state.auth.role) {
-            ElMessage.error("没有访问权限")
+        if (to.meta.rolePermitted) {
+            let roleName = store.state.auth.role.name
+            if (to.meta.rolePermitted.indexOf(roleName) === -1) {
+                ElMessage.error("没有访问权限")
+                return false
+            }
         }
     }
 })
