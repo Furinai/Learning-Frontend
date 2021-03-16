@@ -51,7 +51,7 @@ pre {
     border-top: 1px solid #eee;
 }
 
-.el-aside .el-menu {
+.el-aside > .el-menu {
     height: 100vh;
 }
 
