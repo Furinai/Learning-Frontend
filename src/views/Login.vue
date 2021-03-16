@@ -64,7 +64,13 @@ export default {
                         getAuthUser().then(result => {
                             if (result.code === '0000') {
                                 setAuth(result.data)
-                                this.$router.push({name: 'Index'})
+                                let redirect = String(this.$route.query.redirect)
+                                if (redirect) {
+                                    this.$router.push({path: redirect})
+                                } else {
+                                    this.$router.push({name: 'Index'})
+                                }
+
                             }
                         })
                     }).catch(error => {

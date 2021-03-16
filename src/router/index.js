@@ -155,8 +155,7 @@ const router = createRouter({
 router.beforeEach((to, from) => {
     if (to.meta.authRequired) {
         if (!store.state.auth) {
-            router.push({name: 'Login'})
-            return false
+            return {name: 'Login', query: {redirect: to.fullPath}}
         }
         if (to.meta.rolePermitted) {
             let roleName = store.state.auth.role.name
