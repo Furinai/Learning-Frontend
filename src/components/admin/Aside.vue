@@ -30,7 +30,7 @@
                     用户管理
                 </el-menu-item>
                 <el-menu-item index="3-2" :route="{name: 'Role-Manage'}">
-                    用户管理
+                    角色管理
                 </el-menu-item>
             </el-submenu>
         </el-scrollbar>
