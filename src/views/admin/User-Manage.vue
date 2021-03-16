@@ -1,84 +1,29 @@
 <template>
     <div v-if="editMode === 'create' || editMode === 'update'">
-        <el-form ref="user" :model="user" :rules="rules" label-width="80px">
-            <el-form-item label="用户名" prop="username">
-                <el-input v-model="user.username" maxlength="20" show-word-limit type="text"/>
-            </el-form-item>
-            <el-form-item v-if="editMode === 'update'" label="密码">
-                <el-input v-model="user.password" maxlength="20" type="password"/>
-            </el-form-item>
-            <el-form-item v-else label="密码" prop="password">
-                <el-input v-model="user.password" maxlength="20" type="password"/>
-            </el-form-item>
-            <el-form-item label="姓名" prop="fullName">
-                <el-input v-model="user.fullName" maxlength="10" show-word-limit type="text"/>
-            </el-form-item>
-            <el-form-item label="性别" prop="gender">
-                <el-radio-group v-model="user.gender">
-                    <el-radio label="男"></el-radio>
-                    <el-radio label="女"></el-radio>
-                </el-radio-group>
-            </el-form-item>
-            <el-form-item label="角色" prop="role">
-                <el-select v-model="user.role" value-key="id">
-                    <el-option v-for="role in roles" :label="role.name" :value="role"></el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item ref="pictureUploader" label="头像" prop="profilePicture">
-                <el-upload :http-request="uploadProfilePicture" :show-file-list="false" action="" class="avatar-uploader">
-                    <img v-if="uploaded || user.profilePicture" :src="user.profilePicture" alt="头像" class="avatar">
-                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
-            </el-form-item>
-            <el-form-item label="邮箱地址" prop="emailAddress">
-                <el-input v-model="user.emailAddress" maxlength="20" show-word-limit type="text"/>
-            </el-form-item>
-            <el-form-item label="电话号码" prop="phoneNumber">
-                <el-input v-model="user.phoneNumber" maxlength="20" show-word-limit type="text"/>
-            </el-form-item>
-            <el-form-item class="text-right">
-                <el-button :loading="loading" size="small" type="primary" @click="onSubmit('user')">确认
-                </el-button>
-                <el-button size="small" @click="editMode = ''">取消</el-button>
-            </el-form-item>
-        </el-form>
+        <UserForm :user="user" :editMode="editMode" @cancel="handleCancel" includeRole="true"/>
     </div>
     <div v-else>
-        <el-table ref="table" :data="users" border size="medium" style="width: 100%">
-            <el-table-column type="expand">
-                <template #default="props">
-                    <el-form class="table-expand" inline label-position="left">
-                        <el-form-item label="邮箱地址">
-                            <span>{{ props.row.emailAddress }}</span>
-                        </el-form-item>
-                        <el-form-item label="电话号码">
-                            <span>{{ props.row.phoneNumber }}</span>
-                        </el-form-item>
-                        <el-form-item label="创建时间">
-                            <span>{{ props.row.createTime }}</span>
-                        </el-form-item>
-                        <el-form-item label="修改时间">
-                            <span>{{ props.row.updateTime }}</span>
-                        </el-form-item>
-                    </el-form>
-                </template>
-            </el-table-column>
-            <el-table-column align="center" label="ID" prop="id" width="150"/>
-            <el-table-column align="center" label="头像" width="100">
+        <el-table ref="table" :data="users" style="width: 100%" border>
+            <el-table-column align="center" label="ID" prop="id" width="80"/>
+            <el-table-column align="center" label="头像" width="80">
                 <template #default="scope">
                     <el-avatar :src="scope.row.profilePicture" size="small"/>
                 </template>
             </el-table-column>
-            <el-table-column align="center" label="用户名" prop="username" width="150"/>
-            <el-table-column align="center" label="姓名" prop="fullName" width="150"/>
+            <el-table-column align="center" label="用户名" prop="username" width="100"/>
+            <el-table-column align="center" label="姓名" prop="fullName" width="100"/>
             <el-table-column align="center" label="性别" prop="gender" width="100"/>
-            <el-table-column align="center" label="角色" prop="role.name" width="150"/>
-            <el-table-column align="center" label="操作" width="150px">
+            <el-table-column align="center" label="角色" prop="role.name" width="100"/>
+            <el-table-column align="center" label="手机号码" prop="phoneNumber" width="150"/>
+            <el-table-column align="center" label="邮箱地址" prop="emailAddress" width="150"/>
+            <el-table-column align="center" label="创建时间" prop="createTime" width="150"/>
+            <el-table-column align="center" label="修改时间" prop="updateTime" width="150"/>
+            <el-table-column align="center" label="操作">
                 <template #header>
                     <el-button size="mini" type="primary" @click="createUser">新增</el-button>
                 </template>
                 <template #default="scope">
-                    <el-dropdown trigger="click" @command="handleCommand($event,scope.row)">
+                    <el-dropdown trigger="click" @command="handleCommand($event, scope.row)">
                         <span class="el-dropdown-link">
                             <i class="el-icon-s-operation"></i>
                         </span>
@@ -101,117 +46,39 @@
 </template>
 
 <script>
-import {createUser, deleteUser, getRoles, getUsers, updateUser, uploadProfilePicture} from '/@/utils/api'
+import {deleteUser, getUsers} from '/@/utils/api'
+import UserForm from '/@/components/User-Form.vue'
 
 export default {
     name: "User-Manage",
+    components: {UserForm},
     data() {
         return {
             user: {},
             users: [],
-            roles: [],
             size: 0,
-            editMode: '',
-            uploaded: false,
-            loading: false,
-            rules: {
-                username: [
-                    {required: true, message: '请输入用户名', trigger: 'blur'},
-                    {min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur'}
-                ],
-                password: [
-                    {required: true, message: '请输入密码', trigger: 'blur'},
-                    {min: 6, max: 20, message: '长度在 6 到 20 个字符', trigger: 'blur'}
-                ],
-                fullName: [
-                    {required: true, message: '请输入姓名', trigger: 'blur'},
-                    {min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur'}
-                ],
-                gender: [{required: true, message: '请选择性别', trigger: 'change'}
-                ],
-                role: [
-                    {required: true, message: '请选择角色', trigger: 'change'}
-                ],
-                profilePicture: [
-                    {required: true, message: '请上传头像', trigger: 'change'}
-                ],
-                emailAddress: [
-                    {type: 'email', required: true, message: '请输入正确的邮箱地址', trigger: 'blur'}
-                ],
-                phoneNumber: [
-                    {required: true, message: '请输入正确手机号码', trigger: 'blur'},
-                    {pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码', trigger: 'blur'}
-                ]
-            }
+            editMode: null,
+            pageNum: null
         }
     },
     created() {
         this.getUsers()
     },
     methods: {
-        getUsers(pageNumber) {
-            getUsers({pageNumber}).then(result => {
+        getUsers() {
+            getUsers({pageNum: this.pageNum}).then(result => {
                 if (result.code === '0000') {
                     this.users = result.data.list
                     this.size = result.data.size
-                    this.$refs.table.doLayout()
-                }
-            })
-        },
-        getRoles() {
-            getRoles().then(result => {
-                if (result.code === '0000') {
-                    this.roles = result.data
-                }
-            })
-        },
-        onSubmit(user) {
-            this.$refs[user].validate((valid) => {
-                if (valid) {
-                    this.loading = true
-                    if (this.editMode === 'create') {
-                        createUser(this.user).then(result => {
-                            if (result.code === '0000') {
-                                this.uploaded = false
-                                this.$refs[user].resetFields()
-                                this.$message.success("新增成功！")
-                            }
-                        }).finally(() => this.loading = false)
-                    }
-                    if (this.editMode === 'update') {
-                        updateUser(this.user).then(result => {
-                            if (result.code === '0000') {
-                                this.$message.success("更新成功！")
-                                this.editMode = ''
-                            }
-                        }).finally(() => this.loading = false)
-                    }
-                }
-            })
-        },
-        uploadProfilePicture(params) {
-            let formData = new FormData()
-            formData.append('multipartFile', params.file)
-            uploadProfilePicture(formData).then(result => {
-                if (result.code === '0000') {
-                    this.$message.success('上传成功！')
-                    this.user.profilePicture = result.data
-                    this.$refs.pictureUploader.clearValidate()
-                    this.uploaded = true
                 }
             })
         },
         createUser() {
-            if (this.roles.length === 0) {
-                this.getRoles()
-            }
+            this.user = {}
             this.editMode = 'create'
         },
         updateUser(row) {
             this.user = row
-            if (this.roles.length === 0) {
-                this.getRoles()
-            }
             this.editMode = 'update'
         },
         deleteUser(row) {
@@ -235,26 +102,16 @@ export default {
                     break
             }
         },
+        handleCancel() {
+            this.editMode = null
+        },
         handlePageChange(pageNum) {
-            this.getUsers(pageNum)
+            this.pageNum = pageNum
+            this.getUsers()
         }
     }
 }
 </script>
 
 <style>
-.table-expand {
-    font-size: 0;
-}
-
-.table-expand label {
-    width: 90px;
-    color: #99a9bf;
-}
-
-.avatar {
-    width: 215px;
-    height: 215px;
-    display: block;
-}
 </style>
