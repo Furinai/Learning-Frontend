@@ -74,7 +74,7 @@ export default {
             })
         },
         getCourses() {
-            getCourses({pageNum: this.pageNum}).then(result => {
+            getCourses({pageNum: this.pageNum, approved: false}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
                     this.size = result.data.size

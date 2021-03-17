@@ -22,9 +22,9 @@ export default {
         getCourse() {
             getCourse(this.courseId).then(result => {
                 if (result.code === '0000') {
+                    this.course = result.data
                     getCategoriesOfCourse(this.courseId).then(result => {
                         if (result.code === '0000') {
-                            this.course = result.data
                             this.course.categories = result.data
                         }
                     })
