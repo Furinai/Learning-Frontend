@@ -296,6 +296,21 @@ export function createNote(data) {
     })
 }
 
+export function updateNote(data) {
+    return request({
+        url: '/notes',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteNote(pathVariable) {
+    return request({
+        url: '/notes/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function createEvaluation(data) {
     return request({
         url: '/evaluations',

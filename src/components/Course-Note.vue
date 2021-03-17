@@ -72,7 +72,7 @@ export default {
             rules: {
                 content: [
                     {required: true, message: '请输入内容', trigger: 'blur'},
-                    {min: 2, max: 1000, message: '长度在2到1000个字符', trigger: 'blur'}
+                    {min: 2, message: '内容最少2个字符', trigger: 'blur'}
                 ]
             }
         }
