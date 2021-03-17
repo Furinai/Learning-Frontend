@@ -1,6 +1,6 @@
 <template>
-    <div v-if="editMode === 'create' || editMode === 'update'">
-        <CourseForm :course="course" :editMode="editMode" @cancel="editMode = null" includeStatus="true"/>
+    <div v-if="editMode === 'update'">
+        <CourseForm :course="course" editMode="update" @cancel="editMode = null" includeStatus="true"/>
     </div>
     <div v-else>
         <el-table ref="table" :data="courses" style="width: 100%" border>
@@ -14,9 +14,6 @@
             <el-table-column align="center" label="创建时间" prop="createTime" width="150"/>
             <el-table-column align="center" label="修改时间" prop="updateTime" width="150"/>
             <el-table-column align="center" label="操作" width="100">
-                <template #header>
-                    <el-button size="mini" type="primary" @click="createCourse">新增</el-button>
-                </template>
                 <template #default="scope">
                     <el-dropdown trigger="click" @command="handleCommand($event, scope.row)">
                         <span class="el-dropdown-link">
@@ -53,7 +50,7 @@ export default {
     components: {CourseForm},
     data() {
         return {
-            course: {categories: []},
+            course: {},
             courses: [],
             size: 0,
             editMode: null,
@@ -79,14 +76,6 @@ export default {
                 }
             })
         },
-        createCourse() {
-            this.course = {categories: []}
-            this.editMode = 'create'
-        },
-        updateCourse(row) {
-            this.getCourse(row.id)
-            this.editMode = 'update'
-        },
         deleteCourse(row) {
             this.$confirm("确定删除？").then(() => {
                 deleteCourse(row.id).then(result => {
@@ -103,7 +92,8 @@ export default {
         handleCommand(command, row) {
             switch (command) {
                 case 'updateCourse':
-                    this.updateCourse(row)
+                    this.getCourse(row.id)
+                    this.editMode = 'update'
                     break
                 case 'deleteCourse':
                     this.deleteCourse(row)
