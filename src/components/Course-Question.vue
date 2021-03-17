@@ -49,11 +49,11 @@
                 <el-input v-model="question.title" placeholder="标题" type="text"/>
             </el-form-item>
             <el-form-item prop="content">
-                <el-input type="textarea" v-model="question.content" placeholder="内容"></el-input>
+                <el-input type="textarea" v-model="question.content" placeholder="内容"/>
             </el-form-item>
             <el-form-item>
-                <el-button class="button-long" type="primary" @click="createQuestion('question')"
-                           :loading="loading" round>
+                <el-button class="button-long" type="primary" :loading="loading"
+                           @click="createQuestion('question')" round>
                     发布
                 </el-button>
             </el-form-item>

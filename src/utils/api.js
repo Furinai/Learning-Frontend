@@ -242,6 +242,21 @@ export function createQuestion(data) {
     })
 }
 
+export function updateQuestion(data) {
+    return request({
+        url: '/questions',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteQuestion(pathVariable) {
+    return request({
+        url: '/questions/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function getAnswersOfQuestion(pathVariable, params) {
     return request({
         url: '/questions/' + pathVariable + '/answers',
