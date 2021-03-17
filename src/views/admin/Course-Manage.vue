@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import {deleteCourse, getCourse, getCourses} from '/@/utils/api'
+import {deleteCourse, getCategoriesOfCourse, getCourse, getCourses} from '/@/utils/api'
 import CourseForm from '/@/components/Course-Form.vue'
 
 export default {
@@ -64,7 +64,12 @@ export default {
         getCourse(courseId) {
             getCourse(courseId).then(result => {
                 if (result.code === '0000') {
-                    this.course = result.data
+                    getCategoriesOfCourse(courseId).then(result => {
+                        if (result.code === '0000') {
+                            this.course = result.data
+                            this.course.categories = result.data
+                        }
+                    })
                 }
             })
         },

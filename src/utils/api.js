@@ -171,6 +171,14 @@ export function getChaptersOfCourse(pathVariable, params) {
     })
 }
 
+export function getCategoriesOfCourse(pathVariable, params) {
+    return request({
+        url: '/courses/' + pathVariable + '/categories',
+        method: 'get',
+        params
+    })
+}
+
 export function getQuestionsOfCourse(pathVariable, params) {
     return request({
         url: '/courses/' + pathVariable + '/questions',

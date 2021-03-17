@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {getCourse} from '/@/utils/api'
+import {getCategoriesOfCourse, getCourse} from '/@/utils/api'
 import CourseForm from '/@/components/Course-Form.vue'
 
 export default {
@@ -22,7 +22,12 @@ export default {
         getCourse() {
             getCourse(this.courseId).then(result => {
                 if (result.code === '0000') {
-                    this.course = result.data
+                    getCategoriesOfCourse(this.courseId).then(result => {
+                        if (result.code === '0000') {
+                            this.course = result.data
+                            this.course.categories = result.data
+                        }
+                    })
                 }
             })
         }
