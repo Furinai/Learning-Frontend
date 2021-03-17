@@ -37,12 +37,12 @@
                             暂无评分
                         </span>
                     </div>
-                    <div v-if="course.attended" class="attend-button">
+                    <div v-if="course.registered" class="register-button">
                         <el-button type="primary" size="small" round>
                             继续学习
                         </el-button>
                     </div>
-                    <div v-else class="attend-button">
+                    <div v-else class="registered-button">
                         <el-button v-if="course.price !== 0" type="primary" size="small" round>
                             立即购买
                         </el-button>
@@ -151,10 +151,7 @@ export default {
     color: #67C23A;
 }
 
-.average-score i {
-}
-
-.attend-button {
+.registered-button {
     position: absolute;
     bottom: 10px;
     right: 10px;
