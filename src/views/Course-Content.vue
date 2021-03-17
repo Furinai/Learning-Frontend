@@ -42,7 +42,7 @@
                             继续学习
                         </el-button>
                     </div>
-                    <div v-else class="registered-button">
+                    <div v-else class="register-button">
                         <el-button v-if="course.price !== 0" type="primary" size="small" round>
                             立即购买
                         </el-button>
@@ -151,7 +151,7 @@ export default {
     color: #67C23A;
 }
 
-.registered-button {
+.register-button {
     position: absolute;
     bottom: 10px;
     right: 10px;
