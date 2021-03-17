@@ -304,6 +304,21 @@ export function createEvaluation(data) {
     })
 }
 
+export function updateEvaluation(data) {
+    return request({
+        url: '/evaluations',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteEvaluation(pathVariable) {
+    return request({
+        url: '/evaluations/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function getCoursesOfUser(pathVariable, params) {
     return request({
         url: '/users/' + pathVariable + '/courses',
