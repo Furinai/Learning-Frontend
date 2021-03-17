@@ -26,7 +26,7 @@
         </el-table-column>
     </el-table>
     <div class="pagination">
-        <el-pagination background layout="prev, pager, next" :pager-count="5" :total="size" :page-size="20"
+        <el-pagination background layout="prev, pager, next" :pager-count="5" :total="size" :page-size="10"
                        :hide-on-single-page="true" @current-change="handlePageChange">
         </el-pagination>
     </div>
