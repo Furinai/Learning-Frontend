@@ -1,6 +1,6 @@
 <template>
     <div v-if="editMode === 'create' || editMode === 'update'">
-        <CourseForm :course="course" :editMode="editMode" @cancel="handleCancel" includeStatus="true"/>
+        <CourseForm :course="course" :editMode="editMode" @cancel="editMode = null" includeStatus="true"/>
     </div>
     <div v-else>
         <el-table ref="table" :data="courses" style="width: 100%" border>
@@ -9,7 +9,8 @@
             <el-table-column align="center" label="价格" prop="price" width="100"/>
             <el-table-column align="center" label="教师" prop="teacher.fullName" width="100"/>
             <el-table-column align="center" label="平均评分" prop="averageScore" width="100"/>
-            <el-table-column align="center" label="审核通过" prop="approved" width="100" :formatter="statusFormatter"/>
+            <el-table-column align="center" label="审核通过" prop="approved" width="100"
+                             :formatter="(row, column, cellValue) => { return cellValue ? '是' : '否' }"/>
             <el-table-column align="center" label="创建时间" prop="createTime" width="150"/>
             <el-table-column align="center" label="修改时间" prop="updateTime" width="150"/>
             <el-table-column align="center" label="操作" width="100">
@@ -121,12 +122,6 @@ export default {
                     break
             }
         },
-        statusFormatter(row, column, cellValue) {
-            return cellValue ? '是' : '否'
-        },
-        handleCancel() {
-            this.editMode = null
-        },
         handlePageChange(pageNum) {
             this.pageNum = pageNum
             this.getCourses()
@@ -136,5 +131,4 @@ export default {
 </script>
 
 <style>
-
 </style>
