@@ -40,7 +40,8 @@
                 <el-rate v-model="evaluation.score"/>
             </el-form-item>
             <el-form-item prop="comment">
-                <el-input type="textarea" v-model="evaluation.comment" rows="6" placeholder="评论"></el-input>
+                <el-input type="textarea" v-model.trim="evaluation.comment" :autosize="{minRows: 4, maxRows: 10}"
+                          placeholder="请输入内容" minlength="5" maxlength="500" show-word-limit/>
             </el-form-item>
             <el-form-item>
                 <el-button class="button-long" type="primary" @click="createEvaluation('evaluation')" :loading="loading" round>
