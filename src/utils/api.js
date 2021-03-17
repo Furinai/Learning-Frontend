@@ -273,6 +273,21 @@ export function createAnswer(data) {
     })
 }
 
+export function updateAnswer(data) {
+    return request({
+        url: '/answers',
+        method: 'put',
+        data
+    })
+}
+
+export function deleteAnswer(pathVariable) {
+    return request({
+        url: '/answers/' + pathVariable,
+        method: 'delete'
+    })
+}
+
 export function createNote(data) {
     return request({
         url: '/notes',
