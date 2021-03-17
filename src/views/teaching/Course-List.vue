@@ -74,10 +74,10 @@ export default {
         }
     },
     created() {
-        this.getCourse()
+        this.getCourses()
     },
     methods: {
-        getCourse() {
+        getCourses() {
             getCourses({teacherName: this.auth.username, pageNum: this.pageNum}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list

@@ -34,10 +34,10 @@ export default {
         }
     },
     created() {
-        this.getCourse()
+        this.getCourses()
     },
     methods: {
-        getCourse() {
+        getCourses() {
             getCoursesOfUser(this.$route.params.username, {pageNum: this.pageNum}).then(result => {
                 if (result.code === '0000') {
                     this.courses = result.data.list
