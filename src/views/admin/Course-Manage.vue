@@ -1,6 +1,6 @@
 <template>
     <div v-if="editMode === 'create' || editMode === 'update'">
-        <CourseForm :course="course" :editMode="editMode" @cancel="handleCancel"/>
+        <CourseForm :course="course" :editMode="editMode" @cancel="handleCancel" includeStatus="true"/>
     </div>
     <div v-else>
         <el-table ref="table" :data="courses" style="width: 100%" border>

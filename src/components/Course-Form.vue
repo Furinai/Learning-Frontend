@@ -1,5 +1,5 @@
 <template>
-    <el-form :model="course" :rules="rules" ref="course" label-width="60px">
+    <el-form :model="course" :rules="rules" ref="course" label-width="80px">
         <el-form-item prop="name" label="名称">
             <el-input type="text" v-model="course.name" maxlength="100" show-word-limit/>
         </el-form-item>
@@ -18,7 +18,10 @@
                 </el-option-group>
             </el-select>
         </el-form-item>
-        <el-form-item prop="coverPicture" label="封面">
+        <el-form-item v-if="includeStatus" label="审核通过">
+            <el-switch v-model="course.approved" active-color="#13CE66" inactive-color="#FF4949"/>
+        </el-form-item>
+        <el-form-item prop="coverPicture" label="封面图片">
             <el-upload class="cover-picture-uploader" action="" :show-file-list="false"
                        :http-request="uploadCoverPicture">
                 <img v-if="course.coverPicture" :src="course.coverPicture" class="form-cover-picture" alt="封面">
@@ -45,6 +48,7 @@ export default {
     props: [
         'course',
         'editMode',
+        'includeStatus',
         'separatePage'
     ],
     data() {
@@ -67,7 +71,7 @@ export default {
                     {type: 'array', required: true, message: '请选择分类', trigger: 'change'}
                 ],
                 coverPicture: [
-                    {required: true, message: '请上传封面', trigger: 'change'}
+                    {required: true, message: '请上传封面图片', trigger: 'change'}
                 ]
             }
         }
