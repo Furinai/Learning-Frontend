@@ -3,7 +3,7 @@
         <el-table-column prop="id" label="ID" align="center" width="200"/>
         <el-table-column prop="name" label="名称" align="center" width="300"/>
         <el-table-column prop="createTime" label="创建时间" align="center"/>
-        <el-table-column prop="updateTime" label="修改时间" align="center"/>
+        <el-table-column prop="updateTime" label="更新时间" align="center"/>
         <el-table-column label="操作" align="center" width="200">
             <template #header #default="scope">
                 <el-button type="primary" size="mini" @click="createRole">新增</el-button>

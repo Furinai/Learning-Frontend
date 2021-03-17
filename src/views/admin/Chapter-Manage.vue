@@ -9,7 +9,7 @@
             <el-table-column align="center" label="内容类型" prop="type"
                              width="150" :formatter="typeFormatter"/>
             <el-table-column align="center" label="创建时间" prop="createTime" width="200"/>
-            <el-table-column align="center" label="修改时间" prop="updateTime" width="200"/>
+            <el-table-column align="center" label="更新时间" prop="updateTime" width="200"/>
             <el-table-column align="center" label="操作" width="150">
                 <template #header>
                     <el-button size="mini" type="primary" @click="createChapter">新增</el-button>

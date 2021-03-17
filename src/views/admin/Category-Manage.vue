@@ -22,7 +22,7 @@
         <el-table ref="table" :data="categories" style="width: 100%" row-key="id" border>
             <el-table-column prop="name" label="名称" align="center" width="300"/>
             <el-table-column prop="createTime" label="创建时间" align="center"/>
-            <el-table-column prop="updateTime" label="修改时间" align="center"/>
+            <el-table-column prop="updateTime" label="更新时间" align="center"/>
             <el-table-column label="操作" align="center" width="200">
                 <template #header>
                     <el-button type="primary" size="mini" @click="createCategory">新增</el-button>

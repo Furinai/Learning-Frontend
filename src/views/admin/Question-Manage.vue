@@ -10,7 +10,7 @@
         <el-table-column align="center" label="作者" prop="author.fullName" width="150"/>
         <el-table-column align="center" label="回答数量" prop="answerCount" width="150"/>
         <el-table-column align="center" label="创建时间" prop="createTime" width="150"/>
-        <el-table-column align="center" label="修改时间" prop="updateTime" width="150"/>
+        <el-table-column align="center" label="更新时间" prop="updateTime" width="150"/>
         <el-table-column align="center" label="操作" width="150">
             <template #default="scope">
                 <el-dropdown trigger="click" @command="handleCommand($event, scope.row)">

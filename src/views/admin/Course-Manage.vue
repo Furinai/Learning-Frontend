@@ -12,7 +12,7 @@
             <el-table-column align="center" label="审核通过" prop="approved" width="100"
                              :formatter="(row, column, cellValue) => { return cellValue ? '是' : '否' }"/>
             <el-table-column align="center" label="创建时间" prop="createTime" width="150"/>
-            <el-table-column align="center" label="修改时间" prop="updateTime" width="150"/>
+            <el-table-column align="center" label="更新时间" prop="updateTime" width="150"/>
             <el-table-column align="center" label="操作" width="100">
                 <template #default="scope">
                     <el-dropdown trigger="click" @command="handleCommand($event, scope.row)">
