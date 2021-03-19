@@ -27,6 +27,9 @@ import {mapState} from 'vuex'
 
 export default {
     name: "Course-Chapter",
+    props: [
+        'registered'
+    ],
     data() {
         return {
             courseId: this.$route.params.id,
@@ -50,12 +53,13 @@ export default {
             })
         },
         viewChapter(chapter) {
-            //todo 权限验证
             if (!this.auth) {
                 this.$router.push({name: 'Login'})
             } else {
-                this.chapter = chapter
-                this.dialogVisible = true
+                if (this.registered) {
+                    this.chapter = chapter
+                    this.dialogVisible = true
+                }
             }
         }
     }

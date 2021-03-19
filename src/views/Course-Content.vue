@@ -57,7 +57,7 @@
     <el-card class="course-content">
         <el-tabs>
             <el-tab-pane label="章节">
-                <CourseChapter/>
+                <CourseChapter :registered="course.registered"/>
             </el-tab-pane>
             <el-tab-pane label="问答" lazy>
                 <CourseQuestion/>
