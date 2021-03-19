@@ -46,7 +46,7 @@
                         <el-button v-if="course.price !== 0" type="primary" size="small" round>
                             立即购买
                         </el-button>
-                        <el-button v-else type="primary" size="small" round>
+                        <el-button v-else @click="registerCourse" type="primary" size="small" round>
                             开始学习
                         </el-button>
                     </div>
@@ -57,7 +57,7 @@
     <el-card class="course-content">
         <el-tabs>
             <el-tab-pane label="章节">
-                <CourseChapter :registered="course.registered"/>
+                <CourseChapter ref="chapter-list" :registered="course.registered"/>
             </el-tab-pane>
             <el-tab-pane label="问答" lazy>
                 <CourseQuestion/>
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import {getCourse} from '/@/utils/api'
+import {getCourse, updateCourse} from '/@/utils/api'
 import CourseChapter from '/@/components/Course-Chapter.vue'
 import CourseQuestion from '/@/components/Course-Question.vue'
 import CourseNote from '/@/components/Course-Note.vue'
@@ -89,17 +89,26 @@ export default {
     },
     data() {
         return {
+            courseId: this.$route.params.id,
             course: {teacher: {}}
         }
     },
     created() {
-        this.getCourse(this.$route.params.id)
+        this.getCourse()
     },
     methods: {
-        getCourse(id) {
-            getCourse(id).then(result => {
+        getCourse() {
+            getCourse(this.courseId).then(result => {
                 if (result.code === '0000') {
                     this.course = result.data
+                }
+            })
+        },
+        registerCourse() {
+            updateCourse({id: this.courseId, registered: true}).then(result => {
+                if (result.code === '0000') {
+                    this.getCourse()
+                    this.$refs['chapter-list'].getChapters()
                 }
             })
         }

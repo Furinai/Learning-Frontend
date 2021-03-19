@@ -42,11 +42,11 @@ export default {
         'auth'
     ]),
     created() {
-        this.getChapters(this.courseId)
+        this.getChapters()
     },
     methods: {
-        getChapters(id) {
-            getChaptersOfCourse(id).then(result => {
+        getChapters() {
+            getChaptersOfCourse(this.courseId).then(result => {
                 if (result.code === '0000') {
                     this.chapters = result.data
                 }
