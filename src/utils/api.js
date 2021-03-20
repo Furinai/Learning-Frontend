@@ -358,6 +358,30 @@ export function getNotesOfUser(pathVariable, params) {
     })
 }
 
+export function createOrder(data) {
+    return request({
+        url: '/orders',
+        method: 'post',
+        data
+    })
+}
+
+export function updateOrder(data) {
+    return request({
+        url: '/orders',
+        method: 'put',
+        data
+    })
+}
+
+export function payOrder(params) {
+    return request({
+        url: '/payments',
+        method: 'get',
+        params
+    })
+}
+
 export function uploadProfilePicture(data) {
     return request({
         url: '/profile-pictures',

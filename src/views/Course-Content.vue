@@ -43,7 +43,7 @@
                         </el-button>
                     </div>
                     <div v-else class="register-button">
-                        <el-button v-if="course.price !== 0" type="primary" size="small" round>
+                        <el-button v-if="course.price !== 0" @click="buyCourse" type="primary" size="small" round>
                             立即购买
                         </el-button>
                         <el-button v-else @click="registerCourse" type="primary" size="small" round>
@@ -70,6 +70,7 @@
             </el-tab-pane>
         </el-tabs>
     </el-card>
+    <orderDetail ref="order-detail"/>
 </template>
 
 <script>
@@ -78,10 +79,13 @@ import CourseChapter from '/@/components/Course-Chapter.vue'
 import CourseQuestion from '/@/components/Course-Question.vue'
 import CourseNote from '/@/components/Course-Note.vue'
 import CourseEvaluation from '/@/components/Course-Evaluation.vue'
+import OrderDetail from '/@/components/Order-Detail.vue'
+import {mapState} from 'vuex'
 
 export default {
     name: "Course-Content",
     components: {
+        OrderDetail,
         CourseChapter,
         CourseQuestion,
         CourseNote,
@@ -93,6 +97,9 @@ export default {
             course: {teacher: {}}
         }
     },
+    computed: mapState([
+        'auth'
+    ]),
     created() {
         this.getCourse()
     },
@@ -104,13 +111,27 @@ export default {
                 }
             })
         },
+        buyCourse() {
+            if (!this.auth) {
+                this.$router.push({name: 'Login'})
+            } else {
+                this.$refs['order-detail'].createOrder(this.courseId)
+            }
+        },
         registerCourse() {
-            updateCourse({id: this.courseId, registered: true}).then(result => {
-                if (result.code === '0000') {
-                    this.getCourse()
-                    this.$refs['chapter-list'].getChapters()
-                }
-            })
+            if (!this.auth) {
+                this.$router.push({name: 'Login'})
+            } else {
+                updateCourse({id: this.courseId, registered: true}).then(result => {
+                    if (result.code === '0000') {
+                        this.updateContent()
+                    }
+                })
+            }
+        },
+        updateContent(){
+            this.getCourse()
+            this.$refs['chapter-list'].getChapters()
         }
     }
 }
