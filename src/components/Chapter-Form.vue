@@ -91,7 +91,7 @@ export default {
                             if (!this.$refs['video']) {
                                 return
                             } else {
-                                this.chapter.videoTime = this.$refs['video'].duration * 1000
+                                this.chapter.videoTime = this.$refs['video'].duration
                             }
                         }
                         this.loading = true
