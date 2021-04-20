@@ -15,6 +15,9 @@
         </el-col>
         <el-col :span="12">
             <el-row v-if="auth" type="flex" justify="end">
+                <router-link :to="{name: 'Course-Search'}">
+                <i class="el-icon-search"/>搜索
+                </router-link>
                 <router-link v-if="auth.role.name !== '学生'" :to="{name: 'Teaching-Course-List'}">
                     <i class="el-icon-suitcase"/>教学管理
                 </router-link>
@@ -50,6 +53,9 @@
                 </el-popover>
             </el-row>
             <el-row v-else type="flex" justify="end">
+                <router-link :to="{name: 'Course-Search'}">
+                <i class="el-icon-search"/>搜索
+                </router-link>
                 <router-link :to="{name: 'Login'}">
                     <i class="el-icon-user"/>登录
                 </router-link>

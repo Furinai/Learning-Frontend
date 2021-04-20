@@ -163,6 +163,14 @@ export function deleteCourse(pathVariable) {
     })
 }
 
+export function searchCourse(params) {
+    return request({
+        url: '/courses/search',
+        method: 'get',
+        params
+    })
+}
+
 export function getChaptersOfCourse(pathVariable, params) {
     return request({
         url: '/courses/' + pathVariable + '/chapters',

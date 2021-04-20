@@ -7,6 +7,7 @@ import Login from '/@/views/Login.vue'
 import Register from '/@/views/Register.vue'
 import CourseList from '/@/views/Course-List.vue'
 import CourseContent from '/@/views/Course-Content.vue'
+import CourseSearch from '/@/views/Course-Search.vue'
 import QuestionContent from '/@/views/Question-Content.vue'
 import UserHomepage from '/@/views/User-Homepage.vue'
 import UserSetting from '/@/views/User-Setting.vue'
@@ -59,6 +60,11 @@ const routes = [
                 path: '/courses/:id',
                 name: 'Course-Content',
                 component: CourseContent
+            },
+            {
+                path: '/courses/search',
+                name: 'Course-Search',
+                component: CourseSearch
             },
             {
                 path: '/questions/:id',
