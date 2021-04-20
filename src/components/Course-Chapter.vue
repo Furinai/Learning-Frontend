@@ -59,6 +59,8 @@ export default {
                 if (this.registered) {
                     this.chapter = chapter
                     this.dialogVisible = true
+                }else {
+                    this.$message.warning("请先参加或购买课程")
                 }
             }
         }
