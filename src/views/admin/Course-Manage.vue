@@ -64,9 +64,9 @@ export default {
         getCourse(courseId) {
             getCourse(courseId).then(result => {
                 if (result.code === '0000') {
+                    this.course = result.data
                     getCategoriesOfCourse(courseId).then(result => {
                         if (result.code === '0000') {
-                            this.course = result.data
                             this.course.categories = result.data
                         }
                     })
