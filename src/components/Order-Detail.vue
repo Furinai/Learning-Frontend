@@ -57,7 +57,6 @@ export default {
             payOrder({orderId: this.order.id}).then(result => {
                 if (result.code === '0000') {
                     this.$refs['payment-form'].innerHTML = result.data
-                    document.forms[0].target = "_blank"
                     document.forms[0].submit()
                     this.dialogVisible = false
                 }
