@@ -5,8 +5,8 @@
                 <div class="card-title">注册</div>
             </template>
             <el-form ref="user" :model="user" :rules="rules">
-                <el-form-item prop="email">
-                    <el-input type="email" v-model="user.email" placeholder="邮箱"/>
+                <el-form-item prop="emailAddress">
+                    <el-input type="email" v-model="user.emailAddress" placeholder="邮箱"/>
                 </el-form-item>
                 <el-form-item prop="username">
                     <el-input type="text" v-model="user.username" placeholder="用户名"/>
@@ -32,12 +32,12 @@ export default {
     data() {
         return {
             user: {
-                email: '',
+                emailAddress: '',
                 username: '',
                 password: ''
             },
             rules: {
-                email: [
+                emailAddress: [
                     {type: 'email', required: true, message: '请输入正确的邮箱', trigger: 'blur'}
                 ],
                 username: [
