@@ -1,5 +1,5 @@
 <template>
-    <ChapterForm :chapter="chapter" editMode="update" :preview="preview" separatePage="true"/>
+    <ChapterForm :chapter="chapter" editMode="update" separatePage="true"/>
 </template>
 
 <script>
@@ -12,8 +12,7 @@ export default {
     data() {
         return {
             chapterId: this.$route.query.chapterId,
-            chapter: {},
-            preview: null,
+            chapter: {}
         }
     },
     created() {
@@ -24,7 +23,6 @@ export default {
             getChapter(this.chapterId).then(result => {
                 if (result.code === '0000') {
                     this.chapter = result.data
-                    this.preview = this.chapter.videoUrl
                 }
             })
         }

@@ -15,8 +15,14 @@
                     </el-upload>
                     <el-progress style="width: 210px" :stroke-width="16" :percentage="progress" text-inside/>
                 </div>
-                <video ref="video" v-if="preview" :src="preview" height="225" width="400"
-                       controls controlslist="nodownload" disablePictureInPicture/>
+                <div v-if="editMode ==='update'">
+                    <video ref="video" :src="chapter.videoUrl" height="225" width="400"
+                           controls controlslist="nodownload" disablePictureInPicture/>
+                </div>
+                <div v-else>
+                    <video ref="video" v-if="preview" :src="preview" height="225" width="400"
+                           controls controlslist="nodownload" disablePictureInPicture/>
+                </div>
             </div>
         </el-form-item>
         <el-form-item v-if="chapter.type === 'text'" prop="textContent" label="内容">
@@ -42,13 +48,13 @@ export default {
     props: [
         'editMode',
         'chapter',
-        'preview',
         'separatePage'
     ],
     data() {
         return {
             loading: false,
             progress: 0,
+            preview: null,
             rules: {
                 title: [
                     {required: true, message: '请输入标题', trigger: 'blur'},
@@ -99,6 +105,9 @@ export default {
                         createChapter(this.chapter).then(result => {
                             if (result.code === '0000') {
                                 this.$message.success('创建成功！')
+                                this.$refs['chapter'].resetFields()
+                                this.progress = 0
+                                this.preview = null
                             }
                         }).finally(() => this.loading = false)
                     }
@@ -129,7 +138,7 @@ export default {
 </script>
 
 <style>
-.is-error .video-uploader  .el-upload {
+.is-error .video-uploader .el-upload {
     border: 1px dashed #F56C6C;
 }
 
