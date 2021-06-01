@@ -156,6 +156,14 @@ export function updateCourse(data) {
     })
 }
 
+export function updateRegistrationOfCourse(params) {
+    return request({
+        url: '/courses/registration',
+        method: 'put',
+        params
+    })
+}
+
 export function deleteCourse(pathVariable) {
     return request({
         url: '/courses/' + pathVariable,

@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import {getCourse, updateCourse} from '/@/utils/api'
+import {getCourse, updateRegistrationOfCourse} from '/@/utils/api'
 import CourseChapter from '/@/components/Course-Chapter.vue'
 import CourseQuestion from '/@/components/Course-Question.vue'
 import CourseNote from '/@/components/Course-Note.vue'
@@ -122,14 +122,14 @@ export default {
             if (!this.auth) {
                 this.$router.push({name: 'Login'})
             } else {
-                updateCourse({id: this.courseId, registered: true}).then(result => {
+                updateRegistrationOfCourse({courseId: this.courseId}).then(result => {
                     if (result.code === '0000') {
                         this.updateContent()
                     }
                 })
             }
         },
-        updateContent(){
+        updateContent() {
             this.getCourse()
             this.$refs['chapter-list'].getChapters()
         }
