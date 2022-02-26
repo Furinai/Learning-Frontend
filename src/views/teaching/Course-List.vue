@@ -19,7 +19,10 @@
                         免费
                     </div>
                     <div class="mt-2">
-                        <i class="el-icon-medal"/>平均评分：
+                        <el-icon>
+                            <medal/>
+                        </el-icon>
+                        平均评分：
                         <span v-if="course.averageScore">
                             {{ course.averageScore }}分
                         </span>
@@ -28,16 +31,22 @@
                         </span>
                     </div>
                     <div v-if="course.approved" class="checked mt-2">
-                        <i class="el-icon-circle-check"></i>已通过审核
+                        <el-icon>
+                            <circle-check/>
+                        </el-icon>
+                        已通过审核
                     </div>
                     <div v-else class="unchecked mt-2">
-                        <i class="el-icon-circle-close"></i>未通过审核
+                        <el-icon>
+                            <circle-close/>
+                        </el-icon>
+                        未通过审核
                     </div>
                 </el-col>
                 <el-col :offset="1" :span="1">
                     <el-dropdown @command="handleCommand($event, course)" trigger="click">
                         <span class="el-dropdown-link">
-                            <i class="el-icon-s-operation"></i>
+                            <el-icon :size="20"><operation/></el-icon>
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu>

@@ -29,7 +29,10 @@
                         简介：{{ course.description }}
                     </div>
                     <div class="average-score">
-                        <i class="el-icon-medal"/>平均评分：
+                        <el-icon>
+                            <medal/>
+                        </el-icon>
+                        平均评分：
                         <span v-if="course.averageScore">
                             {{ course.averageScore }}分
                         </span>

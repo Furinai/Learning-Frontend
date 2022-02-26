@@ -3,12 +3,12 @@
         <li v-for="(chapter, index) in chapters" class="list flex-between"
             @click="viewChapter(chapter)">
             <span class="chapter-icon">
-                <i v-if="chapter.type ==='video'" class="el-icon-video-play"/>
-                <i v-if="chapter.type ==='text'" class="el-icon-document"/>
+                <el-icon v-if="chapter.type ==='video'"><video-play/></el-icon>
+                <el-icon v-if="chapter.type ==='text'"><document/></el-icon>
                 第{{ index + 1 }}章：{{ chapter.title }}
             </span>
             <span v-if="chapter.videoTime">
-                <i class="el-icon-time"/>{{ chapter.videoTime }}
+                <el-icon><clock/></el-icon>{{ chapter.videoTime }}
             </span>
         </li>
     </ul>
@@ -59,7 +59,7 @@ export default {
                 if (this.registered) {
                     this.chapter = chapter
                     this.dialogVisible = true
-                }else {
+                } else {
                     this.$message.warning("请先参加或购买课程")
                 }
             }

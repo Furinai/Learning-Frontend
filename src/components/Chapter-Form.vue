@@ -11,7 +11,9 @@
             <div class="flex-start">
                 <div class="video-uploader">
                     <el-upload action="" :show-file-list="false" :http-request="uploadVideo">
-                        <i class="el-icon-plus"/>
+                        <el-icon>
+                            <plus/>
+                        </el-icon>
                     </el-upload>
                     <el-progress style="width: 210px" :stroke-width="16" :percentage="progress" text-inside/>
                 </div>

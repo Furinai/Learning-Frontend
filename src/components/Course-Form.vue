@@ -25,7 +25,9 @@
             <el-upload class="cover-picture-uploader" action="" :show-file-list="false"
                        :http-request="uploadCoverPicture">
                 <img v-if="course.coverPicture" :src="course.coverPicture" class="form-cover-picture" alt="封面">
-                <i v-else class="el-icon-plus"></i>
+                <el-icon>
+                    <plus/>
+                </el-icon>
             </el-upload>
         </el-form-item>
         <el-form-item class="text-right">

@@ -6,23 +6,38 @@
                     Linter
                 </router-link>
                 <router-link :to="{name: 'Index'}">
-                    <i class="el-icon-house"/>首页
+                    <el-icon>
+                        <house/>
+                    </el-icon>
+                    首页
                 </router-link>
                 <router-link :to="{name: 'Course-List'}">
-                    <i class="el-icon-files"/>课程
+                    <el-icon>
+                        <files/>
+                    </el-icon>
+                    课程
                 </router-link>
             </el-row>
         </el-col>
         <el-col :span="12">
             <el-row v-if="auth" type="flex" justify="end">
                 <router-link :to="{name: 'Course-Search'}">
-                <i class="el-icon-search"/>搜索
+                    <el-icon>
+                        <search/>
+                    </el-icon>
+                    搜索
                 </router-link>
                 <router-link v-if="auth.role.name !== '学生'" :to="{name: 'Teaching-Course-List'}">
-                    <i class="el-icon-suitcase"/>教学管理
+                    <el-icon>
+                        <suitcase/>
+                    </el-icon>
+                    教学管理
                 </router-link>
                 <router-link v-if="auth.role.name === '管理员'" :to="{name: 'Admin-Index'}">
-                    <i class="el-icon-monitor"/>后台管理
+                    <el-icon>
+                        <monitor/>
+                    </el-icon>
+                    后台管理
                 </router-link>
                 <el-popover placement="bottom-end" :width="200">
                     <template #reference>
@@ -40,11 +55,17 @@
                         </div>
                         <div class="mt-2">
                             <router-link :to="{ name: 'User-Homepage', params: { username: auth.username }}">
-                                <i class="el-icon-user"/>个人主页
+                                <el-icon>
+                                    <user/>
+                                </el-icon>
+                                个人主页
                             </router-link>
                             <el-divider direction="vertical"/>
                             <router-link :to="{ name: 'User-Setting', params: { username: auth.username }}">
-                                <i class="el-icon-setting"/>个人设置
+                                <el-icon>
+                                    <setting/>
+                                </el-icon>
+                                个人设置
                             </router-link>
                             <el-divider/>
                             <el-button type="text" @click="logout">安全退出</el-button>
@@ -54,10 +75,16 @@
             </el-row>
             <el-row v-else type="flex" justify="end">
                 <router-link :to="{name: 'Course-Search'}">
-                <i class="el-icon-search"/>搜索
+                    <el-icon>
+                        <search/>
+                    </el-icon>
+                    搜索
                 </router-link>
                 <router-link :to="{name: 'Login'}">
-                    <i class="el-icon-user"/>登录
+                    <el-icon>
+                        <user/>
+                    </el-icon>
+                    登录
                 </router-link>
             </el-row>
         </el-col>

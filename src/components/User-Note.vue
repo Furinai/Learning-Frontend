@@ -6,10 +6,16 @@
                     <pre>{{ note.content }}</pre>
                 </div>
                 <el-button v-if="!note.expanded" type="text" @click="note.expanded = true">
-                    展开全文<i class="el-icon-arrow-down el-icon--right"></i>
+                    展开全文
+                    <el-icon>
+                        <arrow-down/>
+                    </el-icon>
                 </el-button>
                 <el-button v-else type="text" @click="note.expanded = false">
-                    收起<i class="el-icon-arrow-up el-icon--right"></i>
+                    收起
+                    <el-icon>
+                        <arrow-up/>
+                    </el-icon>
                 </el-button>
             </div>
         </li>

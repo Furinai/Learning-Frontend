@@ -22,7 +22,9 @@
                             </router-link>
                         </div>
                         <div class="answer-count">
-                            <i class="el-icon-chat-line-square"/>
+                            <el-icon>
+                                <chat-square/>
+                            </el-icon>
                             {{ question.answerCount }}
                         </div>
                     </div>

@@ -13,7 +13,7 @@
             <template #default="scope">
                 <el-dropdown trigger="click" @command="handleCommand($event, scope.row)">
                         <span class="el-dropdown-link">
-                            <i class="el-icon-s-operation"></i>
+                            <el-icon :size="20"><operation/></el-icon>
                         </span>
                     <template #dropdown>
                         <el-dropdown-menu>

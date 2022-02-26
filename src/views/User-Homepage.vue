@@ -9,16 +9,26 @@
                     {{ user.fullName }}
                 </el-col>
                 <el-col :span="16">
-                    <i class="el-icon-message"/>邮箱地址：{{ user.emailAddress }}
+                    <el-icon>
+                        <message/>
+                    </el-icon>
+                    邮箱地址：{{ user.emailAddress }}
                 </el-col>
             </el-row>
             <el-row class="mt-2">
                 <el-col :span="8">
-                    <i v-if="user.gender === '男'" class="el-icon-male"/>
-                    <i v-if="user.gender === '女'" class="el-icon-female"/>
+                    <el-icon v-if="user.gender === '男'">
+                        <male/>
+                    </el-icon>
+                    <el-icon v-if="user.gender === '女'">
+                        <female/>
+                    </el-icon>
                 </el-col>
                 <el-col :span="16">
-                    <i class="el-icon-mobile-phone"/>电话号码：{{ user.phoneNumber }}
+                    <el-icon>
+                        <iphone/>
+                    </el-icon>
+                    电话号码：{{ user.phoneNumber }}
                 </el-col>
             </el-row>
         </div>

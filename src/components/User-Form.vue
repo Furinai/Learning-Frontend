@@ -24,11 +24,14 @@
             </el-radio-group>
         </el-form-item>
         <el-form-item prop="profilePicture" label="头像">
-            <el-upload class="profile-picture-uploader" action="" :show-file-list="false" :http-request="uploadProfilePicture">
+            <el-upload class="profile-picture-uploader" action="" :show-file-list="false"
+                       :http-request="uploadProfilePicture">
                 <el-avatar v-if="user.profilePicture" :size="100" :src="user.profilePicture">
                     {{ user.fullName }}
                 </el-avatar>
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                <el-icon class="avatar-uploader-icon">
+                    <plus/>
+                </el-icon>
             </el-upload>
         </el-form-item>
         <el-form-item prop="emailAddress" label="邮箱地址">

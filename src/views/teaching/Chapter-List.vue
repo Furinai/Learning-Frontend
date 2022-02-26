@@ -7,15 +7,15 @@
             <el-row :gutter="20">
                 <el-col :span="22">
                     <span class="chapter-icon">
-                        <i v-if="chapter.type ==='video'" class="el-icon-video-play"/>
-                        <i v-if="chapter.type ==='text'" class="el-icon-document"/>
+                        <el-icon v-if="chapter.type ==='video'"><video-play/></el-icon>
+                        <el-icon v-if="chapter.type ==='text'"><document/></el-icon>
                         第{{ index + 1 }}章：{{ chapter.title }}
                     </span>
                 </el-col>
                 <el-col :offset="1" :span="1">
                     <el-dropdown @command="handleCommand($event, chapter)" trigger="click">
                         <span class="el-dropdown-link">
-                            <i class="el-icon-s-operation"></i>
+                            <el-icon :size="20"><operation/></el-icon>
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu>
