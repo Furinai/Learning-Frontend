@@ -1,17 +1,17 @@
 ### 安装依赖
 
 ```
-yarn install
+pnpm install
 ```
 
 ### 运行开发服务器
 
 ```
-yarn dev
+pnpm dev
 ```
 
 ### 构建项目
 
 ```
-yarn build
+pnpm build
 ```
