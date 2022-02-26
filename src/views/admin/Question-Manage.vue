@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import {deleteQuestion, getQuestionsOfCourse, updateQuestion} from '/@/utils/api'
+import {deleteQuestion, getQuestionsOfCourse, updateQuestion} from '../../utils/api'
 
 export default {
     name: "Question-Manage",

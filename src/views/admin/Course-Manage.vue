@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import {deleteCourse, getCategoriesOfCourse, getCourse, getCourses} from '/@/utils/api'
-import CourseForm from '/@/components/Course-Form.vue'
+import {deleteCourse, getCategoriesOfCourse, getCourse, getCourses} from '../../utils/api'
+import CourseForm from '../../components/Course-Form.vue'
 
 export default {
     name: "Course-Manage",

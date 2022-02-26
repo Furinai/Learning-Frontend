@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ChapterForm from '/@/components/Chapter-Form.vue'
+import ChapterForm from '../../components/Chapter-Form.vue'
 
 export default {
     name: "Chapter-Create",

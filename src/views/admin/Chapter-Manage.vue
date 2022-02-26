@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import {deleteChapter, getChaptersOfCourse} from '/@/utils/api'
-import ChapterForm from '/@/components/Chapter-Form.vue'
+import {deleteChapter, getChaptersOfCourse} from '../../utils/api'
+import ChapterForm from '../../components/Chapter-Form.vue'
 
 export default {
     name: "Chapter-Manage",

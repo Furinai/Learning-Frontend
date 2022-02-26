@@ -2,8 +2,8 @@
     <UserForm :user="user" editMode="update" separatePage="true"/>
 </template>
 <script>
-import {getUser} from '/@/utils/api'
-import UserForm from '/@/components/User-Form.vue'
+import {getUser} from '../utils/api'
+import UserForm from '../components/User-Form.vue'
 
 export default {
     name: "User-Setting",

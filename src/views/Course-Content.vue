@@ -74,12 +74,12 @@
 </template>
 
 <script>
-import {getCourse, updateRegistrationOfCourse} from '/@/utils/api'
-import CourseChapter from '/@/components/Course-Chapter.vue'
-import CourseQuestion from '/@/components/Course-Question.vue'
-import CourseNote from '/@/components/Course-Note.vue'
-import CourseEvaluation from '/@/components/Course-Evaluation.vue'
-import OrderDetail from '/@/components/Order-Detail.vue'
+import {getCourse, updateRegistrationOfCourse} from '../utils/api'
+import CourseChapter from '../components/Course-Chapter.vue'
+import CourseQuestion from '../components/Course-Question.vue'
+import CourseNote from '../components/Course-Note.vue'
+import CourseEvaluation from '../components/Course-Evaluation.vue'
+import OrderDetail from '../components/Order-Detail.vue'
 import {mapState} from 'vuex'
 
 export default {

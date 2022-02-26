@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import {createCategory, deleteCategory, getCategories, updateCategory} from '/@/utils/api'
-import {buildTree} from '/@/utils/processing'
+import {createCategory, deleteCategory, getCategories, updateCategory} from '../../utils/api'
+import {buildTree} from '../../utils/processing'
 
 export default {
     name: "Category-Manage",

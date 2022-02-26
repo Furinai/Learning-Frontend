@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {searchCourse} from '/@/utils/api'
+import {searchCourse} from '../utils/api'
 
 export default {
   name: 'Course-Search',

@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import {deleteEvaluation, getEvaluationsOfCourse, updateEvaluation} from '/@/utils/api'
+import {deleteEvaluation, getEvaluationsOfCourse, updateEvaluation} from '../../utils/api'
 
 export default {
     name: "Evaluation-Manage",

@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import {getUser} from '/@/utils/api'
-import UserCourse from '/@/components/User-Course.vue'
-import UserNote from '/@/components/User-Note.vue'
+import {getUser} from '../utils/api'
+import UserCourse from '../components/User-Course.vue'
+import UserNote from '../components/User-Note.vue'
 
 export default {
     name: "User-Homepage",

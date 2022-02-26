@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import {getCategories, getCourses} from '/@/utils/api'
-import {buildTree} from '/@/utils/processing'
+import {getCategories, getCourses} from '../utils/api'
+import {buildTree} from '../utils/processing'
 
 export default {
     name: 'Index',

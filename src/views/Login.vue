@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import {getAuthUser} from '/@/utils/api'
-import {setAuth, setToken} from '/@/utils/auth'
+import {getAuthUser} from '../utils/api'
+import {setAuth, setToken} from '../utils/auth'
 import axios from 'axios'
 
 export default {

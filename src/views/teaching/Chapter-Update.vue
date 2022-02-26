@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import {getChapter} from '/@/utils/api'
-import ChapterForm from '/@/components/Chapter-Form.vue'
+import {getChapter} from '../../utils/api'
+import ChapterForm from '../../components/Chapter-Form.vue'
 
 export default {
     name: "Chapter-Update",

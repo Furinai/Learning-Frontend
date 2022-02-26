@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import {createCourse, getCategories, updateCourse, uploadCoverPicture} from '/@/utils/api'
-import {buildTree} from '/@/utils/processing'
+import {createCourse, getCategories, updateCourse, uploadCoverPicture} from '../utils/api'
+import {buildTree} from '../utils/processing'
 
 export default {
     name: "Course-Form",

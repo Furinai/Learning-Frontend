@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import {createChapter, updateChapter, uploadVideo} from '/@/utils/api'
+import {createChapter, updateChapter, uploadVideo} from '../utils/api'
 
 export default {
     name: "Chapter-Form",

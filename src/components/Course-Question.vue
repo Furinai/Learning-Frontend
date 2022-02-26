@@ -63,7 +63,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import {createQuestion, getQuestionsOfCourse} from '/@/utils/api'
+import {createQuestion, getQuestionsOfCourse} from '../utils/api'
 
 export default {
     name: "Course-Question",

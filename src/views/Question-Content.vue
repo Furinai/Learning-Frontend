@@ -66,7 +66,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import {createAnswer, getAnswersOfQuestion, getQuestion} from '/@/utils/api'
+import {createAnswer, getAnswersOfQuestion, getQuestion} from '../utils/api'
 
 export default {
     name: "Question-Content",

@@ -54,7 +54,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import {createNote, getNotesOfCourse} from '/@/utils/api'
+import {createNote, getNotesOfCourse} from '../utils/api'
 
 export default {
     name: "Course-Note",

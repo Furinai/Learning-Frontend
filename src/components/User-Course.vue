@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {getCoursesOfUser} from '/@/utils/api'
+import {getCoursesOfUser} from '../utils/api'
 
 export default {
     name: "User-Course",

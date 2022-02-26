@@ -4,7 +4,7 @@
 
 <script>
 
-import CourseForm from '/@/components/Course-Form.vue'
+import CourseForm from '../../components/Course-Form.vue'
 
 export default {
     name: "Course-Create",

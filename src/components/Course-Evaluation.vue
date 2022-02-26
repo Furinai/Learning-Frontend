@@ -54,7 +54,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import {createEvaluation, getEvaluationsOfCourse} from '/@/utils/api'
+import {createEvaluation, getEvaluationsOfCourse} from '../utils/api'
 
 export default {
     name: "Course-Evaluation",

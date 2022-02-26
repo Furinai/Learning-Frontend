@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import {getCategoriesOfCourse, getCourse} from '/@/utils/api'
-import CourseForm from '/@/components/Course-Form.vue'
+import {getCategoriesOfCourse, getCourse} from '../../utils/api'
+import CourseForm from '../../components/Course-Form.vue'
 
 export default {
     name: "Course-Update",

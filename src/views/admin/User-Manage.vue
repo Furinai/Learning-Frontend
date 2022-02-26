@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import {deleteUser, getUsers} from '/@/utils/api'
-import UserForm from '/@/components/User-Form.vue'
+import {deleteUser, getUsers} from '../../utils/api'
+import UserForm from '../../components/User-Form.vue'
 
 export default {
     name: "User-Manage",

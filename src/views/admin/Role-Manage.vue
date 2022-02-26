@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {createRole, deleteRole, getRoles, updateRole} from '/@/utils/api'
+import {createRole, deleteRole, getRoles, updateRole} from '../../utils/api'
 
 export default {
     name: "Role-Manage",

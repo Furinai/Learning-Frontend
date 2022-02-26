@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {createOrder, payOrder, updateOrder} from '/@/utils/api'
+import {createOrder, payOrder, updateOrder} from '../utils/api'
 
 export default {
     name: "Order-Detail",

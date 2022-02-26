@@ -59,7 +59,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import {getCourses} from '/@/utils/api'
+import {getCourses} from '../../utils/api'
 
 export default {
     name: "Teaching-Home",

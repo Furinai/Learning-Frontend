@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {getChaptersOfCourse} from '/@/utils/api'
+import {getChaptersOfCourse} from '../utils/api'
 import {mapState} from 'vuex'
 
 export default {

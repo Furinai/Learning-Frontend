@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import {deleteNote, getNotesOfCourse, updateNote} from '/@/utils/api'
+import {deleteNote, getNotesOfCourse, updateNote} from '../../utils/api'
 
 export default {
     name: "Note-Manage",

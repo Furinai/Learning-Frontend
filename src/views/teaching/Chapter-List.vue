@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {deleteChapter, getChaptersOfCourse} from '/@/utils/api'
+import {deleteChapter, getChaptersOfCourse} from '../../utils/api'
 
 export default {
     name: "Chapter-List",

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {getNotesOfUser} from '/@/utils/api'
+import {getNotesOfUser} from '../utils/api'
 
 export default {
     name: "User-Note",

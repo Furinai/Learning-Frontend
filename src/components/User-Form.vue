@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {createUser, getRoles, updateUser, uploadProfilePicture} from '/@/utils/api'
+import {createUser, getRoles, updateUser, uploadProfilePicture} from '../utils/api'
 
 export default {
     name: "User-Form",

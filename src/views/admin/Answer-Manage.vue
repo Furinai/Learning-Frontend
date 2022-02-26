@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import {deleteAnswer, getAnswersOfQuestion, updateAnswer} from '/@/utils/api'
+import {deleteAnswer, getAnswersOfQuestion, updateAnswer} from '../../utils/api'
 
 export default {
     name: "Answer-Manage",
