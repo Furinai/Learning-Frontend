@@ -58,7 +58,8 @@ export default {
                     params.append('grant_type', 'password')
                     params.append('username', this.user.username)
                     params.append('password', this.user.password)
-                    axios.post('/api/oauth/token', params, {auth}).then(response => {
+                    let baseUrl = import.meta.env.VITE_BASE_API_URL
+                    axios.post(baseUrl + '/api/oauth/token', params, {auth}).then(response => {
                         let data = response.data
                         setToken(data.token_type + ' ' + data.access_token)
                         getAuthUser().then(result => {
