@@ -59,7 +59,7 @@ export default {
                     params.append('username', this.user.username)
                     params.append('password', this.user.password)
                     let baseUrl = import.meta.env.VITE_BASE_API_URL
-                    axios.post(baseUrl + '/api/oauth/token', params, {auth}).then(response => {
+                    axios.post(baseUrl + '/oauth/token', params, {auth}).then(response => {
                         let data = response.data
                         setToken(data.token_type + ' ' + data.access_token)
                         getAuthUser().then(result => {
