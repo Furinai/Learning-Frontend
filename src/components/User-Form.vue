@@ -29,7 +29,7 @@
                 <el-avatar v-if="user.profilePicture" :size="100" :src="user.profilePicture">
                     {{ user.fullName }}
                 </el-avatar>
-                <el-icon class="avatar-uploader-icon">
+                <el-icon v-else class="avatar-uploader-icon">
                     <plus/>
                 </el-icon>
             </el-upload>
@@ -156,7 +156,6 @@ export default {
 }
 
 .profile-picture-uploader .el-upload {
-    height: 100px;
     border-radius: 6px;
     border: 1px dashed #D9D9D9;
 }

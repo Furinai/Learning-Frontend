@@ -184,6 +184,15 @@ pre {
     font-size: 18px;
 }
 
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 215px;
+    height: 215px;
+    line-height: 215px;
+    text-align: center;
+}
+
 .pagination {
     margin-top: 15px;
     text-align: center;
