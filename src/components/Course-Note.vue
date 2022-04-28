@@ -1,6 +1,6 @@
 <template>
     <div class="flex-between mt-1 mb-1">
-        <el-button type="primary" size="mini" @click="openDialog" plain round>
+        <el-button type="primary" size="small" @click="openDialog" plain round>
             新笔记
         </el-button>
         <el-switch v-model="onlyOwn" active-text="仅看自己的" @change="handleSwitchChange"/>

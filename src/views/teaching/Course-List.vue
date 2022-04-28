@@ -1,5 +1,5 @@
 <template>
-    <el-button type="primary" size="mini" @click="createCourse" plain round>
+    <el-button type="primary" size="small" @click="createCourse" plain round>
         新建课程
     </el-button>
     <ul>

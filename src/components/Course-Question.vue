@@ -1,9 +1,9 @@
 <template>
     <div class="flex-between mt-1 mb-1">
-        <el-button type="primary" size="mini" @click="openDialog" plain round>
+        <el-button type="primary" size="small" @click="openDialog" plain round>
             新问题
         </el-button>
-        <el-radio-group v-model="orderBy" size="mini" @change="handleOrderChange">
+        <el-radio-group v-model="orderBy" size="small" @change="handleOrderChange">
             <el-radio-button label="create_time">最新</el-radio-button>
             <el-radio-button label="answer_count">最热</el-radio-button>
         </el-radio-group>

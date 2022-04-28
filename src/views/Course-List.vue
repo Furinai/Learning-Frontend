@@ -1,6 +1,6 @@
 <template>
     <div class="flex-between mb-1">
-        <el-radio-group v-model="orderBy" size="mini" @change="handleOrderChange">
+        <el-radio-group v-model="orderBy" size="small" @change="handleOrderChange">
             <el-radio-button label="create_time">最新</el-radio-button>
             <el-radio-button label="average_score">推荐</el-radio-button>
         </el-radio-group>

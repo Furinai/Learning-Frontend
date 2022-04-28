@@ -1,6 +1,6 @@
 <template>
     <div class="mt-1 mb-1">
-        <el-button type="primary" size="mini" @click="openDialog" plain round>
+        <el-button type="primary" size="small" @click="openDialog" plain round>
             评价
         </el-button>
     </div>

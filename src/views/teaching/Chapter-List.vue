@@ -1,5 +1,5 @@
 <template>
-    <el-button type="primary" size="mini" @click="createChapter(courseId)" plain round>
+    <el-button type="primary" size="small" @click="createChapter(courseId)" plain round>
         新建章节
     </el-button>
     <ul>

@@ -20,7 +20,7 @@
             <el-table-column align="center" label="更新时间" prop="updateTime" width="150"/>
             <el-table-column align="center" label="操作">
                 <template #header>
-                    <el-button size="mini" type="primary" @click="createUser">新增</el-button>
+                    <el-button size="small" type="primary" @click="createUser">新增</el-button>
                 </template>
                 <template #default="scope">
                     <el-dropdown trigger="click" @command="handleCommand($event, scope.row)">
