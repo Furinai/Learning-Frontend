@@ -6,7 +6,7 @@
         <li v-for="course in courses" class="list">
             <el-row :gutter="20">
                 <el-col :span="4">
-                    <el-image :src="course.coverPicture"/>
+                    <el-image :src="course.coverPicture" class="list-cover-picture"/>
                 </el-col>
                 <el-col :span="18">
                     <div class="course-name">
@@ -128,5 +128,10 @@ export default {
 
 .unchecked {
     color: #f56c6c;
+}
+
+.list-cover-picture {
+    height: 140px;
+    width: 100%;
 }
 </style>

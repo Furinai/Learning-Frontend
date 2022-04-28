@@ -9,12 +9,6 @@
                     <div class="course-name">
                         {{ course.name }}
                     </div>
-                    <div class="course-price" v-if="course.price !== 0">
-                        ￥{{ course.price }}
-                    </div>
-                    <div class="course-price free" v-else>
-                        免费
-                    </div>
                     <div class="teacher-info">
                         <el-avatar :src="course.teacher.profilePicture" class="float-left">
                             {{ course.teacher.fullName }}
@@ -24,6 +18,12 @@
                                  {{ course.teacher.fullName }}
                              </router-link>
                         </span>
+                    </div>
+                    <div class="course-price" v-if="course.price !== 0">
+                        ￥{{ course.price }}
+                    </div>
+                    <div class="course-price free" v-else>
+                        免费
                     </div>
                     <div class="course-description">
                         简介：{{ course.description }}
