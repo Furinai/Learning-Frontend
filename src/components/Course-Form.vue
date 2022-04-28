@@ -25,7 +25,7 @@
             <el-upload class="cover-picture-uploader" action="" :show-file-list="false"
                        :http-request="uploadCoverPicture">
                 <img v-if="course.coverPicture" :src="course.coverPicture" class="form-cover-picture" alt="封面">
-                <el-icon>
+                <el-icon v-else class="picture-uploader-icon">
                     <plus/>
                 </el-icon>
             </el-upload>
@@ -149,14 +149,14 @@ export default {
 }
 
 .cover-picture-uploader .el-upload {
-    border: 1px dashed #D9D9D9;
     border-radius: 6px;
+    border: 1px dashed #D9D9D9;
 }
 
 .cover-picture-uploader .el-icon-plus {
     font-size: 32px;
     color: #8c939d;
-    width: 350px;
-    line-height: 200px;
+    width: 100px;
+    line-height: 100px;
 }
 </style>
