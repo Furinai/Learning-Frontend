@@ -41,7 +41,7 @@
                 </router-link>
                 <el-popover placement="bottom-end" :width="200">
                     <template #reference>
-                        <el-button type="text" class="ml-2">
+                        <el-button type="text" class="ml-2 mt-1">
                             <el-avatar :src="auth.profilePicture" :size="32" class="profile-picture">
                             </el-avatar>
                         </el-button>
