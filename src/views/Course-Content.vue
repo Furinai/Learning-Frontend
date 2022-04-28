@@ -19,7 +19,7 @@
                         <el-avatar :src="course.teacher.profilePicture" class="float-left">
                             {{ course.teacher.fullName }}
                         </el-avatar>
-                        <span class="teacher-name user-name">
+                        <span v-if="course.teacher.username" class="teacher-name user-name">
                              <router-link :to="{ name: 'User-Homepage', params: { username: course.teacher.username }}">
                                  {{ course.teacher.fullName }}
                              </router-link>
