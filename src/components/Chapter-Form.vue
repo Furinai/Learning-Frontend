@@ -11,7 +11,7 @@
             <div class="flex-start">
                 <div class="video-uploader">
                     <el-upload action="" :show-file-list="false" :http-request="uploadVideo">
-                        <el-icon>
+                        <el-icon class="picture-uploader-icon">
                             <plus/>
                         </el-icon>
                     </el-upload>
