@@ -16,7 +16,7 @@
                 </el-avatar>
                 <div class="question-info">
                     <div class="flex-between">
-                        <div class="user-name">
+                        <div v-if="question.author.username" class="user-name">
                             <router-link :to="{ name: 'User-Homepage', params: { username: question.author.username }}">
                                 {{ question.author.fullName }}
                             </router-link>

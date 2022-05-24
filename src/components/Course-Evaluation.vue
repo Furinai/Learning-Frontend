@@ -12,7 +12,7 @@
                 </el-avatar>
                 <div class="evaluation-info">
                     <div class="flex-between">
-                        <div class="user-name">
+                        <div v-if="evaluation.author.username" class="user-name">
                             <router-link :to="{ name: 'User-Homepage', params: { username: evaluation.author.username }}">
                                 {{ evaluation.author.fullName }}
                             </router-link>

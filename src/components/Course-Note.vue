@@ -12,7 +12,7 @@
                     {{ note.author.fullName }}
                 </el-avatar>
                 <div class="note-info">
-                    <div class="user-name">
+                    <div v-if="note.author.username" class="user-name">
                         <router-link :to="{ name: 'User-Homepage', params: { username: note.author.username }}">
                             {{ note.author.fullName }}
                         </router-link>

@@ -6,7 +6,7 @@
                 {{ question.author.fullName }}
             </el-avatar>
             <div class="question-info">
-                <div class="user-name">
+                <div v-if="question.author.username" class="user-name">
                     <router-link :to="{ name: 'User-Homepage', params: { username: question.author.username }}">
                         {{ question.author.fullName }}
                     </router-link>
@@ -28,7 +28,7 @@
                         {{ answer.author.fullName }}
                     </el-avatar>
                     <div class="answer-info">
-                        <div class="user-name">
+                        <div v-if="answer.author.username" class="user-name">
                             <router-link :to="{ name: 'User-Homepage', params: { username: answer.author.username }}">
                                 {{ answer.author.fullName }}
                             </router-link>
